@@ -56,4 +56,4 @@ André Camargo,
 Lucas Aciole Albuquerque,
 Pietro Zardini Lisboa,
 Rayanne Da Silva Barros,
-Rodrigo Rocha,
+Rodrigo Rocha.
