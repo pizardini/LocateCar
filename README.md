@@ -52,8 +52,8 @@ Entregas
     Destacando os príncipios SOLID aplicados, e os que não foram utilizados o porquê.
 
 Squad 1:
-André Camargo
-Lucas Aciole Albuquerque
-Pietro Zardini Lisboa
-Rayanne Da Silva Barros
-Rodrigo Rocha
+André Camargo,
+Lucas Aciole Albuquerque,
+Pietro Zardini Lisboa,
+Rayanne Da Silva Barros,
+Rodrigo Rocha,
