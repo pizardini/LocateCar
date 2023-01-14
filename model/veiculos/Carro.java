@@ -10,13 +10,10 @@ public class Carro extends Veiculo {
         return null;
     }
 
-    public void setModel(String model){
+    public void setModelo(String model){
         modelo = model;
     }
-    public String getModel(){
+    public String getModelo(){
         return modelo;
-    }
-    public void teste(){
-        System.out.println(modelo);
     }
 }

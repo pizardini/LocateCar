@@ -9,10 +9,8 @@ import java.util.List;
 
 public class Agencia {
     private String nome;
-    private List<Carro> carros;
-    private List<Moto> motos;
-    private List<Caminhao> caminhoes;
-    private List<Veiculo> veiculosAlugados;
+    private List<Veiculo> veiculosAlugaveis;
+    private List<Veiculo> veiculosEstoque;
 
 
 }

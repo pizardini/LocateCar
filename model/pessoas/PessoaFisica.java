@@ -1,4 +1,6 @@
 package model.pessoas;
 
-public class PessoaFisica {
+import model.entities.Pessoa;
+
+public class PessoaFisica extends Pessoa {
 }
