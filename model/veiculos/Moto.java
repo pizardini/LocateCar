@@ -1,4 +1,12 @@
 package model.veiculos;
 
-public class Moto {
+import model.entities.Veiculo;
+
+import java.math.BigDecimal;
+
+public class Moto extends Veiculo {
+    @Override
+    public BigDecimal getValorDiaria() {
+        return null;
+    }
 }
