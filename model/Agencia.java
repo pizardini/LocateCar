@@ -1,5 +1,6 @@
 package model;
 
+import model.entities.Veiculo;
 import model.veiculos.Caminhao;
 import model.veiculos.Carro;
 import model.veiculos.Moto;
@@ -11,6 +12,7 @@ public class Agencia {
     private List<Carro> carros;
     private List<Moto> motos;
     private List<Caminhao> caminhoes;
+    private List<Veiculo> veiculosAlugados;
 
 
 }
