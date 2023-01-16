@@ -10,7 +10,22 @@ public abstract class Pessoa {
     private String telefone;
     private String endereco;
 
-    public Pessoa(){
+    public Pessoa(String name, String telefone, String endereco){
+        this.name = name;
+        this.telefone = telefone;
+        this.endereco = endereco;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getEndereco() {
+        return endereco;
     }
 
 }
