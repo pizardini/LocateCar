@@ -5,6 +5,9 @@ import model.veiculos.Carro;
 import util.ConsoleUIHelper;
 
 public class Menu {
+
+    private static ViewCliente viewCliente = new ViewCliente();
+
     public static void printMenu() {
         System.out.println("Bem-vindo a LocateCar");
         int value = optionMenu();
@@ -13,6 +16,7 @@ public class Menu {
             case 0 -> {
                 System.out.println("adicionar carro");
             }
+            case 1 -> viewCliente.printMenuCliente();
         }
     }
 
@@ -22,12 +26,10 @@ public class Menu {
         int option = ConsoleUIHelper.askChooseOption(
                 "O que deseja fazer?",
                 "Cadastrar veículos",
-                "Buscar um veículo por parte do nome",
+                "Gerenciar Cliente",
                 "Cadastrar a agência onde o veículo será alugado/devolvido",
                 "Alterar a agência onde o veículo será alugado/devolvido",
                 "Buscar uma agência por parte do nome ou do logradouro do endereço",
-                "Cadastrar o cliente (pessoa fisica/juridica)",
-                "Alterar o cliente (pessoa fisica/juridica)",
                 "Alugar veículo",
                 "Devolver veículo",
                 "Sair"
