@@ -16,6 +16,10 @@ public class PessoaJuridica extends Pessoa {
         return cnpj;
     }
 
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -27,5 +31,10 @@ public class PessoaJuridica extends Pessoa {
     @Override
     public int hashCode() {
         return Objects.hash(cnpj);
+    }
+
+    @Override
+    public String getTipoPessoa() {
+        return "PessoaJuridica";
     }
 }
