@@ -5,17 +5,21 @@ import model.veiculos.Caminhao;
 import model.veiculos.Carro;
 import model.veiculos.Moto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Agencia {
     private String nome;
     private Endereco endereco;
-    private List<Veiculo> veiculos;
+    private List<Veiculo> veiculos = new ArrayList<>();
 
     public Agencia(String nome, Endereco endereco){
         this.nome = nome;
         this.endereco = endereco;
+    }
+
+    public Agencia() {
     }
 
     public String getNome() {
@@ -40,6 +44,10 @@ public class Agencia {
 
     public void setVeiculos(List<Veiculo> veiculos) {
         this.veiculos = veiculos;
+    }
+
+    public void addVeiculo(Veiculo veiculo) {
+        this.veiculos.add(veiculo);
     }
 
     @Override
