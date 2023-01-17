@@ -8,20 +8,6 @@ import java.util.List;
 public class PessoaController {
     static ClienteRepository clienteRepository;
 
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
     public PessoaController(){
         clienteRepository = new ClienteRepository();
     }
