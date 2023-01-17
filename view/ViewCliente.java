@@ -1,11 +1,8 @@
 package view;
 
-import controller.ClienteController;
-import model.entities.Pessoa;
 import util.ConsoleUIHelper;
 
 public class ViewCliente {
-    private static ClienteController clienteController = new ClienteController();
     public static void printMenuCliente() {
         System.out.println("Bem-vindo ao Cadastro de Cliente");
 
@@ -13,7 +10,16 @@ public class ViewCliente {
 
         while(continuar) {
             int value = optionMenuCliente();
-            continuar = clienteController.menuInicial(value);
+
+            switch (value) {
+                case 0 -> System.out.println("Listar Clientes");
+                case 1 -> System.out.println("Listar Clientes");
+                case 2 -> System.out.println("Atualizar Cliente");
+                case 3 -> System.out.println("Remover Cliente");
+                case 4 -> System.out.println("Buscar Clientes");
+                case 5 -> continuar = false;
+            }
+
         }
     }
 

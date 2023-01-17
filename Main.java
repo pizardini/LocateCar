@@ -1,3 +1,4 @@
+import model.Locadora;
 import model.veiculos.Carro;
 import view.Menu;
 

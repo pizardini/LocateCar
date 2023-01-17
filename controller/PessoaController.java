@@ -1,17 +1,22 @@
 package controller;
 
-import model.Cliente;
 import model.entities.Pessoa;
+import repository.ClienteRepository;
 
 import java.util.List;
 
 public class PessoaController {
-    private static List<Cliente<Pessoa>> clientes;
+    static ClienteRepository clienteRepository;
 
-    public void cadastraCliente(Cliente<Pessoa> cliente){
-        this.clientes.add(cliente);
+
+    public PessoaController(){
+        clienteRepository = new ClienteRepository();
     }
-    public void cadastraClientes(List<Cliente<Pessoa>> clientes){
-        this.clientes.addAll(clientes);
+
+    public void cadastraCliente(Pessoa cliente){
+
+    }
+    public List<Pessoa> listarClientes(){
+
     }
 }
