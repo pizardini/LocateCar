@@ -1,22 +1,21 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Locadora {
+
+
     private List<Agencia> agencias;
 
+
     public Locadora() {
+        this.agencias = new ArrayList<>();
     }
 
-    public Locadora(List<Agencia> agencias) {
-        this.agencias = agencias;
+    public Locadora(Agencia agencia) {
+        this.agencias.add(agencia);
     }
 
-    public List<Agencia> getAgencias() {
-        return agencias;
-    }
 
-    public void setAgencias(List<Agencia> agencias) {
-        this.agencias = agencias;
-    }
 }

@@ -20,6 +20,11 @@ public class Agencia {
     }
 
     public Agencia() {
+        this.veiculos = new ArrayList<>();
+    }
+    public Agencia(String nome, Veiculo veiculo) {
+        this.nome = nome;
+        this.veiculos.add(veiculo);
     }
 
     public String getNome() {

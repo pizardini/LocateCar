@@ -2,18 +2,17 @@ package view;
 
 import model.Agencia;
 import model.Endereco;
+import model.Locadora;
+import model.entities.Veiculo;
 import model.veiculos.Caminhao;
 import model.veiculos.Carro;
 import model.veiculos.Moto;
 import util.ConsoleUIHelper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
-
-//    private List<Agencia> agenciaList;
-//    public Menu() { this.agenciaList = new ArrayList<>();}
+    Locadora locadora = new Locadora();
     private static ViewCliente viewCliente = new ViewCliente();
 
     public void printMenu() {
@@ -21,13 +20,14 @@ public class Menu {
         int value = optionMenu();
 
         switch (value){
-//            case 0 -> cadastrarVeiculo(agencia);
+//            case 0: cadastrarVeiculo(agencia);
 
-            case 1 -> viewCliente.printMenuCliente();
+            case 1: viewCliente.printMenuCliente();
 
-            case 2 -> {
+            case 2: {
                 Agencia agencia = new Agencia();
-                cadastrarAgencia(agencia);
+                agencia = cadastrarAgencia(agencia);
+                //locadora.add(agencia); /não estou conseguindo fazer esse add funcionar
             }
         }
     }
