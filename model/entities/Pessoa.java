@@ -16,6 +16,8 @@ public abstract class Pessoa {
         this.endereco = endereco;
     }
 
+    public abstract String getTipoPessoa();
+
     public String getName() {
         return name;
     }
@@ -27,5 +29,18 @@ public abstract class Pessoa {
     public String getEndereco() {
         return endereco;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
 
 }
