@@ -31,8 +31,8 @@ public class ViewVeiculo {
     public static int tipoVeiculo() {
         int option = ConsoleUIHelper.askChooseOption(
                 "Qual tipo de veículo que deseja cadastrar?",
-                "Carro",
                 "Moto",
+                "Carro",
                 "Caminhão");
         return option;
     }
@@ -41,17 +41,16 @@ public class ViewVeiculo {
         int tipo = tipoVeiculo();
         switch (tipo) {
             case 0 -> {
-                carro = adicionarCarro(carro);
+                moto = adicionarMoto(moto);
                 //adicionar na lista de veiculos da agencia
             }
             case 1 -> {
-
-                caminhao = adicionarCaminhao(caminhao);
+                carro = adicionarCarro(carro);
                 //adicionar na lista de veiculos da agencia
+
             }
             case 2 -> {
-
-                moto = adicionarMoto(moto);
+                caminhao = adicionarCaminhao(caminhao);
                 //adicionar na lista de veiculos da agencia
             }
         }
@@ -93,7 +92,12 @@ public class ViewVeiculo {
         String modelo = ConsoleUIHelper.askNoEmptyInput("Digite o modelo do veículo", 3);
         String placa = ConsoleUIHelper.askNoEmptyInput("Digite a placa do veículo", 3);
         String ano = ConsoleUIHelper.askNoEmptyInput("Digite o ano do veículo", 3);
-        caminhao = new Caminhao(fabricante, modelo, placa, ano);
+       // caminhao = new Caminhao(fabricante, modelo, placa, ano);
+        caminhao.setFabricante(fabricante);
+        caminhao.setModelo(modelo);
+        caminhao.setPlaca(placa);
+        caminhao.setAno(ano);
+        System.out.println(caminhao);
         return caminhao;
     }
 
@@ -102,7 +106,12 @@ public class ViewVeiculo {
         String modelo = ConsoleUIHelper.askNoEmptyInput("Digite o modelo do veículo", 3);
         String placa = ConsoleUIHelper.askNoEmptyInput("Digite a placa do veículo", 3);
         String ano = ConsoleUIHelper.askNoEmptyInput("Digite o ano do veículo", 3);
-        moto = new Moto(fabricante, modelo, placa, ano);
+        //moto = new Moto(fabricante, modelo, placa, ano);
+        moto.setFabricante(fabricante);
+        moto.setModelo(modelo);
+        moto.setPlaca(placa);
+        moto.setAno(ano);
+        System.out.println(moto);
         return moto;
     }
 

@@ -19,4 +19,14 @@ public class Moto extends Veiculo {
     public Double getValorDiaria() {
         return 100.0;
     }
+
+    @Override
+    public String toString() {
+        return "Moto{" +
+                "fabricante='" + fabricante + '\'' +
+                ", placa='" + placa + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", ano='" + ano + '\'' +
+                '}';
+    }
 }
