@@ -6,8 +6,8 @@ import java.math.BigDecimal;
 
 public class Carro extends Veiculo {
     @Override
-    public BigDecimal getValorDiaria() {
-        return null;
+    public Double getValorDiaria() {
+        return 150.0 ;
     }
 
     public void setModelo(String model){

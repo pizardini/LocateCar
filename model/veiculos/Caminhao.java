@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 public class Caminhao extends Veiculo {
     @Override
-    public BigDecimal getValorDiaria() {
-        return null;
+    public Double getValorDiaria() {
+        return 200.0;
     }
 }
