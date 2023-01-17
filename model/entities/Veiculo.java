@@ -16,7 +16,6 @@ public abstract class Veiculo {
 
     protected String ano;
 
-
     protected BigDecimal valorDiaria;
 
     protected Boolean alugado;
