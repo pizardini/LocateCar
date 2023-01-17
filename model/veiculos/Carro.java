@@ -21,10 +21,13 @@ public class Carro extends Veiculo {
         return 150.0 ;
     }
 
-    public void setModelo(String model){
-        modelo = model;
-    }
-    public String getModelo(){
-        return modelo;
+    @Override
+    public String toString() {
+        return "Carro{" +
+                "fabricante='" + fabricante + '\'' +
+                ", placa='" + placa + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", ano='" + ano + '\'' +
+                '}';
     }
 }
