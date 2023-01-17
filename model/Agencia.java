@@ -20,6 +20,11 @@ public class Agencia {
     }
 
     public Agencia() {
+        this.veiculos = new ArrayList<>();
+    }
+    public Agencia(String nome, Veiculo veiculo) {
+        this.nome = nome;
+        this.veiculos.add(veiculo);
     }
 
     public String getNome() {
@@ -46,9 +51,9 @@ public class Agencia {
         this.veiculos = veiculos;
     }
 
-//    public void addVeiculo(Veiculo veiculo) {
-//        this.veiculos.add(veiculo);
-//    }
+    public void addVeiculo(Veiculo veiculo) {
+        this.veiculos.add(veiculo);
+    }
 
     @Override
     public boolean equals(Object o) {
