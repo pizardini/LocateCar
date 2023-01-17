@@ -17,6 +17,9 @@ public class PessoaFisica extends Pessoa {
         return cpf;
     }
 
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
     // Para não ter duplicação de cliente
     @Override
@@ -30,5 +33,10 @@ public class PessoaFisica extends Pessoa {
     @Override
     public int hashCode() {
         return Objects.hash(cpf);
+    }
+
+    @Override
+    public String getTipoPessoa() {
+        return "PessoaFisica";
     }
 }
