@@ -1,25 +1,23 @@
 package view;
 
+import controller.ClienteController;
+import model.entities.Pessoa;
 import util.ConsoleUIHelper;
 
 public class ViewCliente {
-
+    private static ClienteController clienteController = new ClienteController();
     public static void printMenuCliente() {
         System.out.println("Bem-vindo ao Cadastro de Cliente");
+
         boolean continuar = true;
 
         while(continuar) {
             int value = optionMenuCliente();
-            switch (value) {
-                case 0 -> {
-                    System.out.println("adicionar Cliente");
-                }
-                case 5 -> continuar = false;
-            }
+            continuar = clienteController.menuInicial(value);
         }
     }
 
-    private static int optionMenuCliente() {
+    public static int optionMenuCliente() {
 
         int option = ConsoleUIHelper.askChooseOption("Escolha a opção: ",
                 "Cadastrar Cliente;",
@@ -31,6 +29,10 @@ public class ViewCliente {
         );
 
         return option;
+    }
+
+    public void menuCadastro(){
+
     }
 
 
