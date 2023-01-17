@@ -46,9 +46,9 @@ public class Agencia {
         this.veiculos = veiculos;
     }
 
-    public void addVeiculo(Veiculo veiculo) {
-        this.veiculos.add(veiculo);
-    }
+//    public void addVeiculo(Veiculo veiculo) {
+//        this.veiculos.add(veiculo);
+//    }
 
     @Override
     public boolean equals(Object o) {
