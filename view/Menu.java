@@ -1,16 +1,8 @@
 package view;
 
-import controller.VeiculoController;
 import model.Agencia;
-import model.Endereco;
 import model.Locadora;
-import model.veiculos.Caminhao;
-import model.veiculos.Carro;
-import model.veiculos.Moto;
 import util.ConsoleUIHelper;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static view.ViewAgencia.cadastrarAgencia;
 import static view.ViewVeiculo.*;
@@ -22,33 +14,43 @@ public class Menu {
 
     Locadora locadora = new Locadora();
     private static ViewCliente viewCliente = new ViewCliente();
+    private static ViewVeiculo viewVeiculo = new ViewVeiculo();
 
-    public static void printMenu() {
+    public static void printMenuPrincipal() {
         System.out.println("Bem-vindo a LocateCar");
-        int value = optionMenu();
+        int value = optionMenuPrincipal();
         Agencia agencia = new Agencia();
 
-        switch (value){
-            case 0 -> {
-                cadastrarVeiculo(agencia);
-                printMenu();
-            }
+        switch (value) {
+            case 0 -> viewVeiculo.printMenuVeiculo();
+
 
             case 1 -> viewCliente.printMenuCliente();
 
             case 2 -> {
                 cadastrarAgencia(agencia);
                 //locadora.add(agencia); /não estou conseguindo fazer esse add funcionar
-                printMenu();
+                printMenuPrincipal();
             }
         }
     }
 
 
-
-
-
-
+    public static int optionMenuPrincipal() {
+        int option = ConsoleUIHelper.askChooseOption(
+                "O que deseja fazer?",
+                "Gerenciar veículos",
+                "Gerenciar Cliente",
+                "Cadastrar agência ",
+                "Alterar agência",
+                "Buscar uma agência por parte do nome ou do logradouro do endereço",
+                "Alugar veículo",
+                "Devolver veículo",
+                "Sair"
+        );
+        return option;
+    }
 }
+
 
 

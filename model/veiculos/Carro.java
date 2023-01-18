@@ -21,6 +21,10 @@ public class Carro extends Veiculo {
         return 150.0 ;
     }
 
+    public String getTipoVeiculo() {
+        return "Carro";
+    }
+
     @Override
     public String toString() {
         return "Carro{" +
