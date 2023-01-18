@@ -1,7 +1,6 @@
 package view;
 
 import controller.AgenciaController;
-import controller.VeiculoController;
 import model.Agencia;
 import model.Endereco;
 import util.ConsoleUIHelper;
@@ -60,14 +59,19 @@ public class ViewAgencia {
         System.out.println();
     }
 
-    public void printAgencias(List<Agencia> agencias) {
+    public static void printAgencias(List<Agencia> agencias) {
         System.out.println("Lista de Agências cadastradas");
         System.out.println();
-        System.out.println("Agências:");
 
         for (Agencia a: agencias) {
             ConsoleUIHelper.drawWithPadding(a.getNome() + " --- " + a.getEndereco() + " --- ", 250);
         }
+    }
 
+    public static void buscarAgencia() {
+        AgenciaController agenciaController = new AgenciaController();
+
+        String nome = ConsoleUIHelper.askSimpleInput("Digite o nome da agência");
+        agenciaController.buscar(nome);
     }
 }
