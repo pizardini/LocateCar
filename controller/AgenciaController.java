@@ -18,7 +18,7 @@ public class AgenciaController {
     public AgenciaController() {
         agenciaRepository = new AgenciaRepository();
     }
-    private AgenciaController agenciaController = new AgenciaController();
+
     private ViewAgencia viewAgencia = new ViewAgencia();
 
     public boolean agenciaOpcao(int value){
@@ -37,7 +37,7 @@ public class AgenciaController {
 
     private void cadastrarAgencia() {
         Agencia agencia = new Agencia();
-        agencia = viewAgencia.dadosAgencia();
+        agencia = ViewAgencia.dadosAgencia();
 
         agenciaRepository.adicionarAgencias(agencia);
         viewAgencia.mensagemGravar();
@@ -46,7 +46,7 @@ public class AgenciaController {
     private void listarAgencias() {
 
         List<Agencia> agencias = agenciaRepository.listarAgencias();
-        viewAgencia.printAgencias(agencias);
+        ViewAgencia.printAgencias(agencias);
     }
 
     public static List<Agencia> buscaNome(String nome) {

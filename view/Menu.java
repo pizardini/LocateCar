@@ -4,22 +4,15 @@ import model.Agencia;
 import model.Locadora;
 import util.ConsoleUIHelper;
 
-import static view.ViewAgencia.printMenuAgencia;
-import static view.ViewVeiculo.*;
 
 public class Menu {
 
-//    private List<Agencia> agenciaList;
-//    public Menu() { this.agenciaList = new ArrayList<>();}
-
-    Locadora locadora = new Locadora();
     private static ViewCliente viewCliente = new ViewCliente();
     private static ViewVeiculo viewVeiculo = new ViewVeiculo();
 
     public static void printMenuPrincipal() {
         System.out.println("Bem-vindo a LocateCar");
         int value = optionMenuPrincipal();
-        Agencia agencia = new Agencia();
 
         switch (value) {
             case 0 -> viewVeiculo.printMenuVeiculo();
@@ -27,10 +20,7 @@ public class Menu {
 
             case 1 -> viewCliente.printMenuCliente();
 
-            case 2 -> {ViewAgencia.printMenuAgencia();
-                //locadora.add(agencia); /não estou conseguindo fazer esse add funcionar
-                printMenuPrincipal();
-            }
+            case 2 -> ViewAgencia.printMenuAgencia();
         }
     }
 
