@@ -14,7 +14,6 @@ public class ClienteRepository {
 
     public ClienteRepository(){
         pessoas = new ArrayList<>();
-
     }
 
     public void adicionarPessoa(Pessoa pessoa){

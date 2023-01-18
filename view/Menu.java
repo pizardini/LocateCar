@@ -4,7 +4,7 @@ import model.Agencia;
 import model.Locadora;
 import util.ConsoleUIHelper;
 
-import static view.ViewAgencia.cadastrarAgencia;
+import static view.ViewAgencia.printMenuAgencia;
 import static view.ViewVeiculo.*;
 
 public class Menu {
@@ -27,8 +27,7 @@ public class Menu {
 
             case 1 -> viewCliente.printMenuCliente();
 
-            case 2 -> {
-                cadastrarAgencia(agencia);
+            case 2 -> {ViewAgencia.printMenuAgencia();
                 //locadora.add(agencia); /não estou conseguindo fazer esse add funcionar
                 printMenuPrincipal();
             }

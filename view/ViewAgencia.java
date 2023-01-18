@@ -1,14 +1,46 @@
 package view;
 
+import controller.AgenciaController;
+import controller.VeiculoController;
 import model.Agencia;
 import model.Endereco;
 import util.ConsoleUIHelper;
 
+import java.util.List;
+
 public class ViewAgencia {
-    public static Agencia cadastrarAgencia(Agencia agencia) {
+
+    private static AgenciaController agenciaController = new AgenciaController();
+
+    public static void printMenuAgencia() {
+        System.out.println("Bem-vindo ao cadastro de agências");
+
+        boolean continuar = true;
+
+        while(continuar) {
+            continuar = agenciaController.agenciaOpcao(optionMenuAgencia());
+        }
+    }
+
+    public static int optionMenuAgencia() {
+        int option = ConsoleUIHelper.askChooseOption(
+                "O que deseja fazer?",
+                "Cadastrar agência",
+                "Alterar agência cadastrada",
+                "Buscar agência por...",
+                "Listar agências",
+                "Sair"
+        );
+        return option;
+    }
+
+    public static Agencia dadosAgencia() {
+
         String nome = ConsoleUIHelper.askNoEmptyInput("Digite o nome da agência", 3);
         Endereco endereco = adicionarEndereco();
-        agencia = new Agencia(nome, endereco);
+
+        Agencia agencia = new Agencia(nome, endereco);
+
         return agencia;
     }
 
@@ -20,5 +52,22 @@ public class ViewAgencia {
         String cep = ConsoleUIHelper.askSimpleInput("Digite o CEP: ");
         Endereco endereco = new Endereco(cep, logradouro, numero, cidade, estado);
         return endereco;
+    }
+
+    public void mensagemGravar(){
+
+        System.out.println("Cadastro realizado com sucesso!");
+        System.out.println();
+    }
+
+    public void printAgencias(List<Agencia> agencias) {
+        System.out.println("Lista de Agências cadastradas");
+        System.out.println();
+        System.out.println("Agências:");
+
+        for (Agencia a: agencias) {
+            ConsoleUIHelper.drawWithPadding(a.getNome() + " --- " + a.getEndereco() + " --- ", 250);
+        }
+
     }
 }
