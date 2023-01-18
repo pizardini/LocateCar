@@ -8,6 +8,7 @@ public class Moto extends Veiculo {
     public Moto() {
     }
 
+
     public Moto(String fabricante, String modelo, String placa, String ano) {
         this.fabricante = fabricante;
         this.modelo = modelo;
@@ -18,5 +19,19 @@ public class Moto extends Veiculo {
     @Override
     public Double getValorDiaria() {
         return 100.0;
+    }
+
+    public String getTipoVeiculo() {
+        return "Caminhao";
+    }
+
+    @Override
+    public String toString() {
+        return "Moto{" +
+                "fabricante='" + fabricante + '\'' +
+                ", placa='" + placa + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", ano='" + ano + '\'' +
+                '}';
     }
 }

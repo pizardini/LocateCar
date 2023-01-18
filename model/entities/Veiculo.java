@@ -67,6 +67,8 @@ public abstract class Veiculo {
 
     public abstract Double getValorDiaria();
 
+    public abstract String getTipoVeiculo();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,5 +80,15 @@ public abstract class Veiculo {
     @Override
     public int hashCode() {
         return Objects.hash(placa);
+    }
+
+    @Override
+    public String toString() {
+        return "Veiculo{" +
+                "fabricante='" + fabricante + '\'' +
+                ", placa='" + placa + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", ano='" + ano + '\'' +
+                '}';
     }
 }

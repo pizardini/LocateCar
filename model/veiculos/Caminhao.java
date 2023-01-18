@@ -19,4 +19,21 @@ public class Caminhao extends Veiculo {
     public Double getValorDiaria() {
         return 200.0;
     }
+
+    @Override
+    public String getTipoVeiculo() {
+        return "Caminhao";
+    }
+
+    @Override
+    public String toString() {
+        return "Caminhao{" +
+                "fabricante='" + fabricante + '\'' +
+                ", placa='" + placa + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", ano='" + ano + '\'' +
+                '}';
+    }
+
+
 }
