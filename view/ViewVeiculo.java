@@ -98,7 +98,7 @@ public class ViewVeiculo {
     }
 
     public static void listar() {
-        listarTudo(veiculoController.listar());
+            listarTudo(veiculoController.listar());
     }
 
     public static void alterarVeiculo() {
