@@ -25,30 +25,29 @@ public class ClienteController {
 
     }
 
-    private void cadastrarCliente(){
+    private void cadastrarCliente() {
         Pessoa pessoa;
         int option = viewCliente.tipoCliente();
 
-        if(option == 0){
-            pessoa =  viewCliente.dadosPessoaFisica();
-        } else{
-            pessoa =  viewCliente.dadosPessoaJuridica();
+        if (option == 0) {
+            pessoa = viewCliente.dadosPessoaFisica();
+        } else {
+            pessoa = viewCliente.dadosPessoaJuridica();
         }
 
         Boolean existe = verifcaExiste(pessoa);
 
-        if(!existe) {
+        if (!existe) {
             pessoaController.cadastraCliente(pessoa);
             viewCliente.mensagemGravar();
-        }else{
+        } else {
             System.out.println("===============================");
             System.out.println("!!!!CLIENTE JÁ CADASTRADO!!!!");
             System.out.println("===============================");
             System.out.println();
         }
+
     }
-
-
     private void listarClientes() {
 
         List<Pessoa> clientes = pessoaController.listarClientes();
