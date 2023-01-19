@@ -30,13 +30,22 @@ public class ClienteController {
         int option = viewCliente.tipoCliente();
 
         if(option == 0){
-            pessoa =  viewCliente. dadosPessoaFisica();
+            pessoa =  viewCliente.dadosPessoaFisica();
         } else{
-            pessoa =  viewCliente. dadosPessoaJuridica();
+            pessoa =  viewCliente.dadosPessoaJuridica();
         }
 
-        pessoaController.cadastraCliente(pessoa);
-        viewCliente.mensagemGravar();
+        Boolean existe = verifcaExiste(pessoa);
+
+        if(!existe) {
+            pessoaController.cadastraCliente(pessoa);
+            viewCliente.mensagemGravar();
+        }else{
+            System.out.println("===============================");
+            System.out.println("!!!!CLIENTE JÁ CADASTRADO!!!!");
+            System.out.println("===============================");
+            System.out.println();
+        }
     }
 
 
@@ -45,6 +54,28 @@ public class ClienteController {
         List<Pessoa> clientes = pessoaController.listarClientes();
         viewCliente.printClientes(clientes);
 
+    }
+
+    private Boolean verifcaExiste(Pessoa cliente){
+        Boolean existe = false;
+        List<Pessoa> clientes = pessoaController.listarClientes();
+        for(Pessoa c : clientes){
+            if(cliente.equals(c)){
+                existe = true;
+            }
+        }
+        return existe;
+    }
+
+
+
+
+
+    public Pessoa listarClienteById(int id){
+
+        Pessoa cliente = pessoaController.listarPessoaById(id);
+
+        return cliente;
 
     }
 

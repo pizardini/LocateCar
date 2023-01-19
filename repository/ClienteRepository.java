@@ -29,7 +29,8 @@ public class ClienteRepository {
     }
 
 
+    public Pessoa listarPessoaById(int id) {
 
-
-
+        return pessoas.get(id);
+    }
 }

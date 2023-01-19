@@ -58,9 +58,11 @@ public class ViewCliente {
         while(repetir) {
             name = ConsoleUIHelper.askNoEmptyInput("Digite o nome:", 3);
             if(!name.isEmpty() || !name.isBlank()){
+                name = name.toUpperCase();
                 repetir = false;
+            }else {
+                System.out.println("O campo esta em branco digite novamente!");
             }
-            System.out.println("O campo esta em branco digite novamente!");
         }
         repetir = true;
         while(repetir) {
@@ -78,9 +80,11 @@ public class ViewCliente {
         while(repetir) {
             endereco = ConsoleUIHelper.askNoEmptyInput("Digite o endereco:", 3);
             if(!endereco.isEmpty() || !endereco.isBlank()){
+                endereco = endereco.toUpperCase();
                 repetir = false;
+            }else {
+                System.out.println("O campo esta em branco digite novamente!");
             }
-            System.out.println("O campo esta em branco digite novamente!");
 
         }
 
