@@ -63,7 +63,7 @@ public class AgenciaController {
         } else {
             System.out.println("Agências encontradas:");
             for (int i = 0; i < agenciasEncontradas.size(); i++) {
-                System.out.println(agenciasEncontradas.get(i).getNome() + " " + );
+                System.out.println(agenciasEncontradas.get(i).getNome() + " " + agenciasEncontradas.get(i).getEndereco());
             }
         }
     }
