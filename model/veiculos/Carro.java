@@ -8,7 +8,8 @@ public class Carro extends Veiculo {
     public Carro() {
     }
 
-    public Carro(String fabricante, String modelo, String placa, String ano) {
+    public Carro(int numeroAgencia, String fabricante, String modelo, String placa, String ano) {
+        this.numeroAgencia = numeroAgencia;
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.placa = placa;

@@ -1,10 +1,12 @@
 package view;
 
 import controller.ClienteController;
+import erros.ValorVazioError;
 import model.entities.Pessoa;
 import model.pessoas.PessoaFisica;
 import model.pessoas.PessoaJuridica;
 import util.ConsoleUIHelper;
+
 
 import java.util.List;
 
@@ -28,7 +30,6 @@ public class ViewCliente {
                 "Cadastrar Cliente;",
                 "Listar Clientes;",
                 "Atualizar Cliente;",
-                "Remover Cliente",
                 "Buscar Cliente;",
                 "Voltar"
         );
@@ -47,26 +48,108 @@ public class ViewCliente {
 
 
     public static Pessoa dadosPessoaFisica(){
+        Boolean repetir = true;
+        String name = null;
+        String telefone = null;
+        String endereco = null;
+        String cpf = null;
 
-        String name = ConsoleUIHelper.askNoEmptyInput("Digite o nome", 3);
-        String telefone = ConsoleUIHelper.askNoEmptyInput("Digite o telefone", 3);
-        String endereco = ConsoleUIHelper.askNoEmptyInput("Digite o endereco", 3);
 
-        String cpf = ConsoleUIHelper.askNoEmptyInput("Digite o CPF", 3);
+        while(repetir) {
+            name = ConsoleUIHelper.askNoEmptyInput("Digite o nome:", 3);
+            if(!name.isEmpty() || !name.isBlank()){
+                repetir = false;
+            }
+            System.out.println("O campo esta em branco digite novamente!");
+        }
+        repetir = true;
+        while(repetir) {
+            telefone = ConsoleUIHelper.askNoEmptyInput("Digite o telefone:", 3);
+            if(telefone.isBlank() || telefone.isEmpty()){
+                System.out.println("O campo esta em branco digite novamente!");
+            }else if(telefone.length() < 7){
+                System.out.println("O tamanho do telefone esta incorreto colocar tamanho minimo é 8");
+            }else{
+                repetir = false;
+            }
+        }
 
-        Pessoa pessoaFisica = new PessoaFisica(name, telefone, endereco, cpf);
+        repetir = true;
+        while(repetir) {
+            endereco = ConsoleUIHelper.askNoEmptyInput("Digite o endereco:", 3);
+            if(!endereco.isEmpty() || !endereco.isBlank()){
+                repetir = false;
+            }
+            System.out.println("O campo esta em branco digite novamente!");
 
+        }
+
+        repetir = true;
+        while(repetir) {
+            cpf = ConsoleUIHelper.askNoEmptyInput("Digite o CPF (digite apenas numeros)", 3);
+            if(cpf.isBlank() || cpf.isEmpty()){
+                System.out.println("O campo esta em branco digite novamente!");
+            }else if(!(cpf.length() == 11)){
+                System.out.println("Colocar apenas numeros (tamanho é 11)!");
+            }else{
+                repetir = false;
+            }
+        }
+
+        PessoaFisica pessoaFisica = new PessoaFisica(name, telefone, endereco, cpf);
         return pessoaFisica;
 
     }
 
     public static Pessoa dadosPessoaJuridica(){
+        Boolean repetir = true;
+        String name = null;
+        String telefone = null;
+        String endereco = null;
+        String cnpj = null;
 
-        String name = ConsoleUIHelper.askNoEmptyInput("Digite o nome da Empresa", 3);
-        String telefone = ConsoleUIHelper.askNoEmptyInput("Digite o telefone da Empresa", 3);
-        String endereco = ConsoleUIHelper.askNoEmptyInput("Digite o endereco da Empresa", 3);
 
-        String cnpj = ConsoleUIHelper.askNoEmptyInput("Digite o cnpj", 3);
+        while(repetir) {
+            name = ConsoleUIHelper.askNoEmptyInput("Digite o nome da Empresa", 3);
+            if(!name.isEmpty() || !name.isBlank()){
+                repetir = false;
+            }
+            System.out.println("O campo esta em branco digite novamente!");
+        }
+        repetir = true;
+        while(repetir) {
+            telefone = ConsoleUIHelper.askNoEmptyInput("Digite o telefone da Empresa", 3);
+            if(telefone.isBlank() || telefone.isEmpty()){
+                System.out.println("O campo esta em branco digite novamente!");
+            }else if(telefone.length() < 7){
+                System.out.println("O tamanho do telefone esta incorreto colocar tamanho minimo é 8");
+            }else{
+                repetir = false;
+            }
+        }
+
+        repetir = true;
+        while(repetir) {
+            endereco = ConsoleUIHelper.askNoEmptyInput("Digite o endereco da Empresa", 3);
+            if(!endereco.isEmpty() || !endereco.isBlank()){
+                repetir = false;
+            }
+            System.out.println("O campo esta em branco digite novamente!");
+
+        }
+
+        repetir = true;
+        while(repetir) {
+            cnpj = ConsoleUIHelper.askNoEmptyInput("Digite o cnpj (digite apenas numeros)", 3);
+            if(cnpj.isBlank() || cnpj.isEmpty()){
+                System.out.println("O campo esta em branco digite novamente!");
+            }else if(!(cnpj.length() == 14)){
+                System.out.println("Colocar apenas numeros (tamanho é 14)!");
+            }else{
+                repetir = false;
+            }
+        }
+
 
         Pessoa pessoaJuridica = new PessoaJuridica(name, telefone, endereco, cnpj);
 
@@ -90,8 +173,8 @@ public class ViewCliente {
 
             if(p.getTipoPessoa().equals("PessoaFisica")) {
 
-                ConsoleUIHelper.drawWithPadding(p.getName() + " --- " +
-                        ((PessoaFisica)p).getCpf() + " --- " + p.getTelefone(), 250);
+                System.out.println("# : Nome: " + p.getName() + " --- " +
+                        "CPF: " + ((PessoaFisica)p).getCpf() + " --- " + "Telefone: " + p.getTelefone());
             }
 
         }
@@ -104,8 +187,8 @@ public class ViewCliente {
 
             if(p.getTipoPessoa().equals("PessoaJuridica")) {
 
-                ConsoleUIHelper.drawWithPadding(p.getName() + " --- " +
-                        ((PessoaJuridica)p).getCnpj() + " --- " + p.getTelefone(), 250);
+                System.out.println("# : Nome: " + p.getName() + " --- " +
+                        "CNPJ: " + ((PessoaJuridica)p).getCnpj() + " --- " + "Telefone: " + p.getTelefone());
             }
 
         }
@@ -114,6 +197,9 @@ public class ViewCliente {
         System.out.println();
 
     }
+
+
+
 
 
 
