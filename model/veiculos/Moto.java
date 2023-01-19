@@ -9,8 +9,7 @@ public class Moto extends Veiculo {
     }
 
 
-    public Moto(int numeroAgencia, String fabricante, String modelo, String placa, String ano) {
-        this.numeroAgencia = numeroAgencia;
+    public Moto(String fabricante, String modelo, String placa, String ano) {
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.placa = placa;

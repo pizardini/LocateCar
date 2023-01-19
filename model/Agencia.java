@@ -12,12 +12,9 @@ import java.util.Objects;
 public class Agencia {
     private String nome;
     private Endereco endereco;
-
-    private int numeroAgencia;
     private List<Veiculo> veiculos = new ArrayList<>();
 
-    public Agencia(int numeroAgencia,  String nome, Endereco endereco){
-        this.numeroAgencia = numeroAgencia;
+    public Agencia(String nome, Endereco endereco){
         this.nome = nome;
         this.endereco = endereco;
     }
@@ -28,14 +25,6 @@ public class Agencia {
     public Agencia(String nome, Veiculo veiculo) {
         this.nome = nome;
         this.veiculos.add(veiculo);
-    }
-
-    public int getNumeroAgencia() {
-        return numeroAgencia;
-    }
-
-    public void setNumeroAgencia(int numeroAgencia) {
-        this.numeroAgencia = numeroAgencia;
     }
 
     public String getNome() {

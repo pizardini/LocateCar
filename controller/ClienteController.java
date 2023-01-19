@@ -17,8 +17,9 @@ public class ClienteController {
             case 0 -> cadastrarCliente();
             case 1 -> listarClientes();
             case 2 -> System.out.println("Atualizar Cliente");
-            case 3 -> System.out.println("Buscar Clientes");
-            case 4 -> continuar = false;
+            case 3 -> System.out.println("Remover Cliente");
+            case 4 -> System.out.println("Buscar Clientes");
+            case 5 -> continuar = false;
         }
 
         return continuar;
@@ -47,6 +48,9 @@ public class ClienteController {
 
 
     }
+
+
+
 
 
 }
