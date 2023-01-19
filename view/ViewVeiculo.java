@@ -12,6 +12,7 @@ import model.veiculos.Caminhao;
 import model.veiculos.Carro;
 import model.veiculos.Moto;
 import util.ConsoleUIHelper;
+import util.RNHelperVeiculo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,10 +75,10 @@ public class ViewVeiculo {
             }
             default -> throw new IllegalStateException("Unexpected value: " + tipo);
         }
-        String fabricante = ConsoleUIHelper.askNoEmptyInput("Digite a marca do veículo", 3).toUpperCase();
-        String modelo = ConsoleUIHelper.askNoEmptyInput("Digite o modelo do veículo", 3).toUpperCase();
-        String placa = ConsoleUIHelper.askNoEmptyInput("Digite a placa do veículo", 3).toUpperCase();
-        String ano = ConsoleUIHelper.askNoEmptyInput("Digite o ano do veículo", 3).toUpperCase();
+        String fabricante = RNHelperVeiculo.trataFabricante();
+        String modelo = RNHelperVeiculo.trataModelo();
+        String placa = RNHelperVeiculo.trataPlaca();
+        String ano = RNHelperVeiculo.trataAno();
         veiculo.setFabricante(fabricante);
         veiculo.setModelo(modelo);
         veiculo.setPlaca(placa);
