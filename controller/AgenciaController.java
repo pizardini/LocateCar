@@ -8,12 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static view.ViewAgencia.buscarAgencia;
-
 
 public class AgenciaController {
     static AgenciaRepository agenciaRepository;
-    protected static List<Agencia> agencias = new ArrayList<>();
+
 
     public AgenciaController() {
         agenciaRepository = new AgenciaRepository();
@@ -29,7 +27,7 @@ public class AgenciaController {
             case 1 -> listarAgencias();
             case 2 -> System.out.println("editar agência");
             case 3 -> System.out.println("remover agência");
-            case 4 -> buscarAgencia();
+            case 4 -> viewAgencia.buscarAgencia();
             case 5 -> continuar = false;
         }
         return continuar;
@@ -50,13 +48,21 @@ public class AgenciaController {
         System.out.println("");
     }
 
-    public static List<Agencia> buscaNome(String nome) {
-        return agencias.stream()
-                .filter(v -> v.getNome().toLowerCase().contains(nome.toLowerCase()))
-                .collect(Collectors.toList());
-    }
-
     public static void buscar(String nome) {
-        ViewAgencia.printAgencias(buscaNome(nome));
+        List<Agencia> agenciasEncontradas = new ArrayList<>();
+        List<Agencia> agencias = agenciaRepository.listarAgencias();
+
+        for (int i = 0; i < agencias.size(); i++) {
+            if(agencias.get(i).getNome().contains(nome)) {
+                agenciasEncontradas.add(agencias.get(i));
+            }
+        }
+
+        if(agenciasEncontradas.size() == 0) {
+            System.out.println("Nenhuma agência encontrada");
+        } else {
+            System.out.println("Agências encontradas:");
+            ViewAgencia.printAgencias(agenciasEncontradas);
+        }
     }
 }

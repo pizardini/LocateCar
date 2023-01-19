@@ -68,7 +68,7 @@ public class ViewAgencia {
         }
     }
     public static void buscarAgencia() {
-        String nome = ConsoleUIHelper.askSimpleInput("Digite o nome da agência");
+        String nome = ConsoleUIHelper.askNoEmptyInput("Digite o nome da agência", 3);
         AgenciaController.buscar(nome);
     }
 }
