@@ -1,34 +1,50 @@
 package view;
 
+import controller.ClienteController;
+import controller.VeiculoController;
 import model.Agencia;
 import model.Endereco;
+import model.entities.Pessoa;
 import model.entities.Veiculo;
+import model.pessoas.PessoaFisica;
+import model.pessoas.PessoaJuridica;
 import model.veiculos.Caminhao;
 import model.veiculos.Carro;
 import model.veiculos.Moto;
 import util.ConsoleUIHelper;
-import util.RNHelperVeiculo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ViewVeiculo {
-    static Veiculo moto = new Moto();
-    static Veiculo carro = new Carro();
-    static Veiculo caminhao = new Caminhao();
 
-    public static int optionMenu() {
-        int option = ConsoleUIHelper.askChooseOption(
-                "O que deseja fazer?",
-                "Cadastrar veículos",
-                "Gerenciar Cliente",
-                "Cadastrar agência ",
-                "Alterar agência",
-                "Buscar uma agência por parte do nome ou do logradouro do endereço",
-                "Alugar veículo",
-                "Devolver veículo",
-                "Sair"
-        );
-        return option;
-    }
+        private static VeiculoController veiculoController = new VeiculoController();
+
+        public static void printMenuVeiculo() {
+            System.out.println("Bem-vindo ao Cadastro de Cliente");
+
+            boolean continuar = true;
+
+            while (continuar) {
+                continuar = veiculoController.veiculoOpcao(optionMenuVeiculo());
+            }
+        }
+        public static int optionMenuVeiculo() {
+            int option = ConsoleUIHelper.askChooseOption(
+                    "O que deseja fazer?",
+                    "Cadastrar Veículo",
+                    "Alterar um veículo cadastrado",
+                    "Buscar um veículo por parte da placa",
+                    "Listar Veículos",
+                    "Sair"
+            );
+            return option;
+        }
+
+
+
+
     public static int tipoVeiculo() {
         int option = ConsoleUIHelper.askChooseOption(
                 "Qual tipo de veículo que deseja cadastrar?",
@@ -38,130 +54,84 @@ public class ViewVeiculo {
         return option;
     }
 
-    public static void cadastrarVeiculo(Agencia agencia) {
+
+    public static void cadastrarVeiculo() {
         int tipo = tipoVeiculo();
+        Veiculo veiculo;
         switch (tipo) {
             case 0 -> {
-                //moto = adicionarMoto(moto); como estava antes
-                moto = adicionarVeiculo(moto);
+                veiculo = new Moto();
                 //adicionar na lista de veiculos da agencia
             }
             case 1 -> {
-                //carro = adicionarCarro(carro); como estava antes
-                carro = adicionarVeiculo(carro);
+                veiculo = new Carro();
                 //adicionar na lista de veiculos da agencia
 
             }
             case 2 -> {
-                //caminhao = adicionarCaminhao(caminhao); como estava antes
-                caminhao = adicionarVeiculo(caminhao);
+                veiculo = new Caminhao();
                 //adicionar na lista de veiculos da agencia
             }
+            default -> throw new IllegalStateException("Unexpected value: " + tipo);
         }
-    }
-
-
-    public static Veiculo adicionarVeiculo(Veiculo veiculo) {
-        boolean flag = false;
-        String fabricante ="", modelo="", placa="", ano="";
-        while (!flag){
-
-            fabricante = ConsoleUIHelper.askNoEmptyInput("Digite o fabricante do veículo", 3).toUpperCase();
-            if (!RNHelperVeiculo.trataFabricante(fabricante)){
-                System.out.println(fabricante + " Não é um nome válido como um fabricante, digite novamente.");
-                continue;
-            }
-            modelo = ConsoleUIHelper.askNoEmptyInput("Digite o modelo do veículo", 3).toUpperCase();
-            if (!RNHelperVeiculo.trataModelo(modelo)){
-                System.out.println(modelo + " Não é um nome válido para modelo, digite novamente.");
-                continue;
-            }
-
-            placa = ConsoleUIHelper.askNoEmptyInput("Digite a placa do veículo", 3).toUpperCase();
-            if (!RNHelperVeiculo.trataPlaca(placa)){
-                System.out.println(placa + " Não é um valor válido para uma placa de veiculo, digite novamente.");
-                continue;
-            }
-            ano = ConsoleUIHelper.askNoEmptyInput("Digite o ano do veículo", 3);
-            if (!RNHelperVeiculo.trataAno(ano)){
-                System.out.println(ano + " Não é um ano válido, digite novamente.");
-
-            }
-            flag = true;
-        }
-        //carro = new Carro(fabricante, modelo, placa, ano);
+        String fabricante = ConsoleUIHelper.askNoEmptyInput("Digite a marca do veículo", 3).toUpperCase();
+        String modelo = ConsoleUIHelper.askNoEmptyInput("Digite o modelo do veículo", 3).toUpperCase();
+        String placa = ConsoleUIHelper.askNoEmptyInput("Digite a placa do veículo", 3).toUpperCase();
+        String ano = ConsoleUIHelper.askNoEmptyInput("Digite o ano do veículo", 3).toUpperCase();
         veiculo.setFabricante(fabricante);
         veiculo.setModelo(modelo);
         veiculo.setPlaca(placa);
         veiculo.setAno(ano);
-        System.out.println(veiculo);
-        return  veiculo;
+        veiculoController.adicionar(veiculo);
+
     }
 
-    //como estava antes \/
-    /*public static Carro adicionarCarro(Carro carro) {
-        boolean flag = false;
-        String fabricante ="", modelo="", placa="", ano="";
-        while (!flag){
 
-            fabricante = ConsoleUIHelper.askNoEmptyInput("Digite o fabricante do veículo", 3).toUpperCase();
-            if (!RNHelperVeiculo.trataFabricante(fabricante)){
-                System.out.println(fabricante + " Não é um nome válido como um fabricante, digite novamente.");
-                continue;
-            }
-            modelo = ConsoleUIHelper.askNoEmptyInput("Digite o modelo do veículo", 3).toUpperCase();
-            if (!RNHelperVeiculo.trataModelo(modelo)){
-                System.out.println(modelo + " Não é um nome válido para modelo, digite novamente.");
-                continue;
-            }
-
-            placa = ConsoleUIHelper.askNoEmptyInput("Digite a placa do veículo", 3).toUpperCase();
-            if (!RNHelperVeiculo.trataPlaca(placa)){
-                System.out.println(placa + " Não é um valor válido para uma placa de veiculo, digite novamente.");
-                continue;
-            }
-            ano = ConsoleUIHelper.askNoEmptyInput("Digite o ano do veículo", 3);
-            if (!RNHelperVeiculo.trataAno(ano)){
-                System.out.println(ano + " Não é um ano válido, digite novamente.");
-
-            }
-            flag = true;
+    public static void listarTudo(List<Veiculo> veiculos) {
+        System.out.println("Veículos cadastrados: ");
+        int i = 0;
+        for (Veiculo veiculo : veiculos) {
+            System.out.println(" Identificador: " + i + " Fabricante: " + veiculo.getFabricante() + " Modelo: " + veiculo.getModelo() + " Placa: " + veiculo.getPlaca() + " Ano: " + veiculo.getAno());
+            i++;
         }
-        //carro = new Carro(fabricante, modelo, placa, ano);
-        carro.setFabricante(fabricante);
-        carro.setModelo(modelo);
-        carro.setPlaca(placa);
-        carro.setAno(ano);
-        System.out.println(carro);
-        return  carro;
+        System.out.println();
     }
 
-    public static Caminhao adicionarCaminhao(Caminhao caminhao) {
-        String fabricante = ConsoleUIHelper.askNoEmptyInput("Digite a marca do veículo", 3);
-        String modelo = ConsoleUIHelper.askNoEmptyInput("Digite o modelo do veículo", 3);
-        String placa = ConsoleUIHelper.askNoEmptyInput("Digite a placa do veículo", 3);
-        String ano = ConsoleUIHelper.askNoEmptyInput("Digite o ano do veículo", 3);
-       // caminhao = new Caminhao(fabricante, modelo, placa, ano);
-        caminhao.setFabricante(fabricante);
-        caminhao.setModelo(modelo);
-        caminhao.setPlaca(placa);
-        caminhao.setAno(ano);
-        System.out.println(caminhao);
-        return caminhao;
+    public static void listar() {
+            listarTudo(veiculoController.listar());
     }
 
-    public static Moto adicionarMoto(Moto moto) {
-        String fabricante = ConsoleUIHelper.askNoEmptyInput("Digite a marca do veículo", 3);
-        String modelo = ConsoleUIHelper.askNoEmptyInput("Digite o modelo do veículo", 3);
-        String placa = ConsoleUIHelper.askNoEmptyInput("Digite a placa do veículo", 3);
-        String ano = ConsoleUIHelper.askNoEmptyInput("Digite o ano do veículo", 3);
-        //moto = new Moto(fabricante, modelo, placa, ano);
-        moto.setFabricante(fabricante);
-        moto.setModelo(modelo);
-        moto.setPlaca(placa);
-        moto.setAno(ano);
-        System.out.println(moto);
-        return moto;
-    }*/
+    public static void alterarVeiculo() {
 
-}
+        listar();
+
+        List<Veiculo> veiculos = veiculoController.listar();
+
+        String escolha = ConsoleUIHelper.askNoEmptyInput("Selecione o veículo através do índice.", 2);
+
+        for (int i = 0; i < veiculos.size(); i++) {
+            if (Integer.valueOf(escolha) == (i)) {
+                System.out.println("Veículo selecionado:");
+                System.out.println("[" + (i) + "] " + veiculos.get(i));
+                veiculos.remove(i);
+                cadastrarVeiculo();
+                System.out.println("Veículo alterado com sucesso!");
+            }
+        }
+    }
+
+
+    public static void buscar() {
+        VeiculoController veiculoController = new VeiculoController();
+
+        String placa = ConsoleUIHelper.askSimpleInput("Digite a placa do veiculo");
+        veiculoController.buscar(placa);
+    }
+
+
+
+
+    }
+
+
+

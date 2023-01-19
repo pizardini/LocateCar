@@ -21,6 +21,11 @@ public class Caminhao extends Veiculo {
     }
 
     @Override
+    public String getTipoVeiculo() {
+        return "Caminhao";
+    }
+
+    @Override
     public String toString() {
         return "Caminhao{" +
                 "fabricante='" + fabricante + '\'' +
@@ -29,4 +34,6 @@ public class Caminhao extends Veiculo {
                 ", ano='" + ano + '\'' +
                 '}';
     }
+
+
 }
