@@ -20,6 +20,8 @@ import java.util.List;
 public class ViewVeiculo {
 
         private static VeiculoController veiculoController = new VeiculoController();
+        private static Agencia agencia = new Agencia();
+        private static List<Veiculo> veiculos = new ArrayList<>();
 
         public static void printMenuVeiculo() {
             System.out.println("Bem-vindo ao Cadastro de Cliente");
@@ -37,6 +39,7 @@ public class ViewVeiculo {
                     "Alterar um veículo cadastrado",
                     "Buscar um veículo por parte da placa",
                     "Listar Veículos",
+                    "Menu Principal",
                     "Sair"
             );
             return option;
@@ -61,6 +64,7 @@ public class ViewVeiculo {
         switch (tipo) {
             case 0 -> {
                 veiculo = new Moto();
+
                 //adicionar na lista de veiculos da agencia
             }
             case 1 -> {
@@ -83,6 +87,11 @@ public class ViewVeiculo {
         veiculo.setPlaca(placa);
         veiculo.setAno(ano);
         veiculoController.adicionar(veiculo);
+
+        agencia.setVeiculos(veiculos);
+
+        agencia.addVeiculo(veiculo);
+        agencia.getVeiculos();
 
     }
 
