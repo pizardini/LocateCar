@@ -25,12 +25,12 @@ public class AgenciaController {
 
         boolean continuar = true;
         switch (value) {
-            case 0: cadastrarAgencia();
-            case 1: listarAgencias();
-            case 2: System.out.println("editar agência");
-            case 3: System.out.println("remover agência");
-            case 4: buscarAgencia();
-            case 5: continuar = false;
+            case 0 -> cadastrarAgencia();
+            case 1 -> listarAgencias();
+            case 2 -> System.out.println("editar agência");
+            case 3 -> System.out.println("remover agência");
+            case 4 -> buscarAgencia();
+            case 5 -> continuar = false;
         }
         return continuar;
     }
@@ -47,6 +47,7 @@ public class AgenciaController {
 
         List<Agencia> agencias = agenciaRepository.listarAgencias();
         ViewAgencia.printAgencias(agencias);
+        System.out.println("");
     }
 
     public static List<Agencia> buscaNome(String nome) {

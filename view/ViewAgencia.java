@@ -25,16 +25,16 @@ public class ViewAgencia {
         int option = ConsoleUIHelper.askChooseOption(
                 "O que deseja fazer?",
                 "Cadastrar agência",
-                "Alterar agência cadastrada",
-                "Buscar agência por...",
                 "Listar agências",
+                "Editar agência",
+                "Remover agência",
+                "Buscar agência",
                 "Sair"
         );
         return option;
     }
 
     public static Agencia dadosAgencia() {
-
         String nome = ConsoleUIHelper.askNoEmptyInput("Digite o nome da agência", 3);
         Endereco endereco = adicionarEndereco();
 
@@ -44,11 +44,11 @@ public class ViewAgencia {
     }
 
     public static Endereco adicionarEndereco() {
-        String logradouro = ConsoleUIHelper.askSimpleInput("Digite o logradouro: ");
-        String numero = ConsoleUIHelper.askSimpleInput("Digite o número da edificação: ");
-        String cidade = ConsoleUIHelper.askSimpleInput("Digite a cidade: ");
-        String estado = ConsoleUIHelper.askSimpleInput("Digite o estado: ");
-        String cep = ConsoleUIHelper.askSimpleInput("Digite o CEP: ");
+        String logradouro = ConsoleUIHelper.askNoEmptyInput("Digite o logradouro: ", 3);
+        String numero = ConsoleUIHelper.askNoEmptyInput("Digite o número da edificação: ", 3);
+        String cidade = ConsoleUIHelper.askNoEmptyInput("Digite a cidade: ", 3);
+        String estado = ConsoleUIHelper.askNoEmptyInput("Digite o estado: ", 3);
+        String cep = ConsoleUIHelper.askNoEmptyInput("Digite o CEP: ", 3);
         Endereco endereco = new Endereco(cep, logradouro, numero, cidade, estado);
         return endereco;
     }
@@ -64,10 +64,9 @@ public class ViewAgencia {
         System.out.println();
 
         for (Agencia a: agencias) {
-            ConsoleUIHelper.drawWithPadding(a.getNome() + " --- " + a.getEndereco() + " --- ", 250);
+            System.out.println("# : Nome: " + a.getNome() + " --- " +"Endereço: " + a.getEndereco());
         }
     }
-
     public static void buscarAgencia() {
         String nome = ConsoleUIHelper.askSimpleInput("Digite o nome da agência");
         AgenciaController.buscar(nome);
