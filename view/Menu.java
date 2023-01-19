@@ -17,7 +17,6 @@ public class Menu {
         switch (value) {
             case 0 -> viewVeiculo.printMenuVeiculo();
 
-
             case 1 -> viewCliente.printMenuCliente();
 
             case 2 -> ViewAgencia.printMenuAgencia();
