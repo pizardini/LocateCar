@@ -28,4 +28,10 @@ public class PessoaController {
         return clienteRepository.listarPessoaById(id);
 
     }
+
+    public void alterarCliente(int index, Pessoa pessoa){
+
+        clienteRepository.alterarPessoa(index, pessoa);
+    }
+
 }

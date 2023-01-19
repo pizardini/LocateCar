@@ -33,4 +33,8 @@ public class ClienteRepository {
 
         return pessoas.get(id);
     }
+
+    public void alterarPessoa(int id, Pessoa pessoa){
+        pessoas.set(id, pessoa);
+    }
 }

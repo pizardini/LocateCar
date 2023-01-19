@@ -1,7 +1,6 @@
 package view;
 
 import controller.ClienteController;
-import erros.ValorVazioError;
 import model.entities.Pessoa;
 import model.pessoas.PessoaFisica;
 import model.pessoas.PessoaJuridica;
@@ -117,8 +116,9 @@ public class ViewCliente {
             name = ConsoleUIHelper.askNoEmptyInput("Digite o nome da Empresa", 3);
             if(!name.isEmpty() || !name.isBlank()){
                 repetir = false;
+            }else {
+                System.out.println("O campo esta em branco digite novamente!");
             }
-            System.out.println("O campo esta em branco digite novamente!");
         }
         repetir = true;
         while(repetir) {
@@ -137,9 +137,9 @@ public class ViewCliente {
             endereco = ConsoleUIHelper.askNoEmptyInput("Digite o endereco da Empresa", 3);
             if(!endereco.isEmpty() || !endereco.isBlank()){
                 repetir = false;
+            }else {
+                System.out.println("O campo esta em branco digite novamente!");
             }
-            System.out.println("O campo esta em branco digite novamente!");
-
         }
 
         repetir = true;
@@ -199,6 +199,41 @@ public class ViewCliente {
 
         System.out.println("##############################################");
         System.out.println();
+
+    }
+
+    public int tipoDeClienteBusca(){
+        System.out.println("Que tipo de Cliente você esta Buscando");
+        int opcao = tipoCliente();
+        return opcao;
+    }
+
+    public String buscaPessoa(int option){
+
+        String documento = null;
+        boolean repetir = true;
+        String tipoDocumento = "CPF";
+        int tamanhoDocumento = 11;
+
+
+        if(option == 1){
+            tipoDocumento = "CNPJ";
+            tamanhoDocumento = 14;
+        }
+
+
+        while(repetir) {
+            documento = ConsoleUIHelper.askNoEmptyInput("Digite o "+  tipoDocumento + " (digite apenas numeros)", 3);
+            if(documento.isBlank() || documento.isEmpty()){
+                System.out.println("O campo esta em branco digite novamente!");
+            }else if(!(documento.length() == tamanhoDocumento)){
+                System.out.println("Colocar apenas numeros (tamanho é "+  tamanhoDocumento + ")!");
+            }else{
+                repetir = false;
+            }
+        }
+
+        return documento;
 
     }
 

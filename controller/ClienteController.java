@@ -1,6 +1,8 @@
 package controller;
 
 import model.entities.Pessoa;
+import model.pessoas.PessoaFisica;
+import model.pessoas.PessoaJuridica;
 import view.ViewCliente;
 
 import java.util.List;
@@ -17,13 +19,49 @@ public class ClienteController {
             case 0 -> cadastrarCliente();
             case 1 -> listarClientes();
             case 2 -> System.out.println("Atualizar Cliente");
-            case 3 -> System.out.println("Buscar Clientes");
+            case 3 -> buscarCliente();
             case 4 -> continuar = false;
         }
 
         return continuar;
 
     }
+
+    private void buscarCliente() {
+        int option = viewCliente.tipoDeClienteBusca();
+        String busca = viewCliente.buscaPessoa(option);
+
+        Pessoa pessoa = buscarLista(busca, option);
+
+        System.out.println(pessoa.getName() + " " + pessoa.getTipoPessoa());
+
+
+    }
+
+    private Pessoa buscarLista(String documento, int option){
+        List<Pessoa> pessoas = pessoaController.listarClientes();
+        Pessoa pessoa = null;
+
+        String tipoCliente = "PessoaFisica";
+
+        if(option == 1){
+            tipoCliente = "PessoaJuridica";
+        }
+        for (Pessoa p: pessoas) {
+            if(option == 0){
+                if(p.getTipoPessoa().equals(tipoCliente) && ((PessoaFisica)p).getCpf().equals(documento)){
+                    pessoa = p;
+                }
+            }else {
+                if(p.getTipoPessoa().equals(tipoCliente) && ((PessoaJuridica)p).getCnpj().equals(documento)){
+                    pessoa = p;
+                }
+            }
+        }
+
+        return pessoa;
+    }
+
 
     private void cadastrarCliente() {
         Pessoa pessoa;
@@ -68,8 +106,6 @@ public class ClienteController {
 
 
 
-
-
     public Pessoa listarClienteById(int id){
 
         Pessoa cliente = pessoaController.listarPessoaById(id);
@@ -77,6 +113,9 @@ public class ClienteController {
         return cliente;
 
     }
+
+
+
 
 
 }
