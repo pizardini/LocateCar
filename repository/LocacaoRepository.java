@@ -30,5 +30,9 @@ public class LocacaoRepository {
         locacoes.set(index, locacao);
     }
 
+    public List<Locacao> listarLocacao(){
+        return locacoes;
+    }
+
 
 }

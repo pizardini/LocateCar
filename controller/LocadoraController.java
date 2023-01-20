@@ -5,9 +5,12 @@ import model.Locacao;
 import model.Locadora;
 import model.entities.Pessoa;
 import model.entities.Veiculo;
+import org.w3c.dom.ls.LSOutput;
 import repository.LocacaoRepository;
 import util.ConsoleUIHelper;
 import view.ViewLocacao;
+
+import java.util.List;
 
 
 public class LocadoraController {
@@ -32,7 +35,14 @@ public class LocadoraController {
         Locacao locacao = new Locacao();
         Pessoa pessoa = viewLocacao.buscarCliente();
         Agencia agencia = viewLocacao.buscarAgencia();
+        if (agencia == null){
+            return;
+        }
         Veiculo veiculo = viewLocacao.buscarVeiculo(agencia.getNome());
+        if (veiculo == null){
+            System.out.println("Essa Agencia não tem veiculo;");
+            return;
+        }
 
         String dataInicio = ConsoleUIHelper.askNoEmptyInput("Insira a data de Inicio da Locação: ",3);
         Double valorDiaria = veiculo.getValorDiaria();
@@ -56,6 +66,24 @@ public class LocadoraController {
     }
 
     private void devolverVeiculo() {
+
+        Pessoa pessoa = viewLocacao.buscarCliente();
+        List<Locacao> locacoes = locacaoRepository.listarLocacao();
+
+        int index  = viewLocacao.escolherLocacaoDevolver(locacoes, pessoa);
+
+        if(index == -1){
+            return;
+        }
+        Locacao locacao = locacaoRepository.buscarLocacaoById(index);
+
+        locacao = viewLocacao.devoverVeiculo(locacao);
+
+        locacaoRepository.alterarLocacao(index, locacao);
+
+        viewLocacao.reciboDevolucao(locacao);
+
+
     }
 
 }
