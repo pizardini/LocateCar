@@ -60,8 +60,6 @@ public class ViewAgencia {
     }
 
     public static void printAgencias(List<Agencia> agencias) {
-        System.out.println("Lista de Agências cadastradas");
-        System.out.println();
 
         for (Agencia a: agencias) {
             System.out.println("# : Nome: " + a.getNome() + " --- " +"Endereço: " + a.getEndereco());

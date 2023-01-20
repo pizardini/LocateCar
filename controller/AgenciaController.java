@@ -44,8 +44,8 @@ public class AgenciaController {
     private void listarAgencias() {
 
         List<Agencia> agencias = agenciaRepository.listarAgencias();
+        System.out.println("Lista de Agências cadastradas");
         ViewAgencia.printAgencias(agencias);
-        System.out.println("");
     }
 
     public static void buscar(String nome) {
@@ -62,9 +62,8 @@ public class AgenciaController {
             System.out.println("Nenhuma agência encontrada");
         } else {
             System.out.println("Agências encontradas:");
-            for (int i = 0; i < agenciasEncontradas.size(); i++) {
-                System.out.println(agenciasEncontradas.get(i).getNome() + " " + agenciasEncontradas.get(i).getEndereco());
-            }
+            ViewAgencia.printAgencias(agenciasEncontradas);
         }
+
     }
 }
