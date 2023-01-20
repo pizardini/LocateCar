@@ -13,7 +13,6 @@ public class SaveController {
     static AgenciaRepository agenciaRepository;
     static ClienteRepository clienteRepository;
 
-//    static VeiculoRepository veiculoRepository;
 //    static LocadoraRepository locadoraRepository;
 
     public SaveController() {

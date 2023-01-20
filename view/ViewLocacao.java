@@ -98,10 +98,11 @@ public class ViewLocacao {
         System.out.println("Endereco da Agencia: " + locacao.getAgencia().getEndereco());
         System.out.println();
         System.out.println("Dados do Veiculo");
+        System.out.println("Marca: " + locacao.getVeiculo().getFabricante());
         System.out.println("Modelo: " + locacao.getVeiculo().getModelo());
-        System.out.println("Placa do Veiculo:" + locacao.getVeiculo().getPlaca());
-        System.out.println("Nome do Cliente: " + locacao.getVeiculo().getTipoVeiculo());
-        System.out.println("Nome do Cliente: " + locacao.getValorDiaria());
+        System.out.println("Placa do Veiculo: " + locacao.getVeiculo().getPlaca());
+        System.out.println("Tipo de veículo: " + locacao.getVeiculo().getTipoVeiculo());
+        System.out.println("Valor da diária: " + locacao.getValorDiaria());
         System.out.println();
         System.out.println("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
 

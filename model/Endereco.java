@@ -73,11 +73,11 @@ public class Endereco {
     @Override
     public String toString() {
         return  (
-                "cep='" + cep + '\'' +
-                ", logradouro='" + logradouro + '\'' +
-                ", numero='" + numero + '\'' +
-                ", cidade='" + cidade + '\'' +
-                ", estado='" + estado + '\''
+                logradouro + ", nº" +
+                numero + ", " +
+                cep + ", " +
+                cidade + ", " +
+                estado
         );
     }
 }
