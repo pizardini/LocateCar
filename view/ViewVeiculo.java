@@ -39,7 +39,6 @@ public class ViewVeiculo {
                     "Alterar um veículo cadastrado",
                     "Buscar um veículo por parte da placa",
                     "Listar Veículos",
-                    "Menu Principal",
                     "Sair"
             );
             return option;

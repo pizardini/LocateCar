@@ -28,8 +28,7 @@ public class VeiculoController {
             case 1 -> ViewVeiculo.alterarVeiculo();
             case 2 -> ViewVeiculo.buscar();
             case 3 -> ViewVeiculo.listar();
-            case 4 -> Menu.printMenuPrincipal();
-            case 5 -> continuar = false;
+            case 4 -> continuar = false;
         }
         return continuar;
 

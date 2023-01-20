@@ -23,9 +23,15 @@ public class PessoaController {
         return clienteRepository.listarPessoas();
     }
 
-    public void removerCliente(Pessoa cliente){
+    public Pessoa listarPessoaById(int id) {
 
-        clienteRepository.removerPessoa(cliente);
+        return clienteRepository.listarPessoaById(id);
+
+    }
+
+    public void alterarCliente(int index, Pessoa pessoa){
+
+        clienteRepository.alterarPessoa(index, pessoa);
     }
 
 }
