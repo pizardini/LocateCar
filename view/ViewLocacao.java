@@ -4,6 +4,7 @@ import controller.AgenciaController;
 import controller.ClienteController;
 import controller.LocadoraController;
 import model.Agencia;
+import model.Locacao;
 import model.entities.Pessoa;
 import model.entities.Veiculo;
 import util.ConsoleUIHelper;
@@ -77,5 +78,32 @@ public class ViewLocacao {
         Veiculo veiculo = viewVeiculo.buscarVeiculoPlaca(placaVeiculo);
 
         return veiculo;
+    }
+
+    public Boolean confimarLocacao() {
+
+        return ConsoleUIHelper.askConfirm("Deseja confirmar a locação", "Sim", "Não");
+    }
+
+    public void comprovanteLocacao(Locacao locacao) {
+
+        System.out.println("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
+        System.out.println("Recibo de Locação do Veiculo");
+        System.out.println();
+        System.out.println("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
+        System.out.println("Data da Locação: " + locacao.getDataInicio());
+        System.out.println("Nome do Cliente: " + locacao.getPessoa().getName());
+        System.out.println();
+        System.out.println("Nome da Agencia: " + locacao.getAgencia().getNome());
+        System.out.println("Endereco da Agencia: " + locacao.getAgencia().getEndereco());
+        System.out.println();
+        System.out.println("Dados do Veiculo");
+        System.out.println("Modelo: " + locacao.getVeiculo().getModelo());
+        System.out.println("Placa do Veiculo:" + locacao.getVeiculo().getPlaca());
+        System.out.println("Nome do Cliente: " + locacao.getVeiculo().getTipoVeiculo());
+        System.out.println("Nome do Cliente: " + locacao.getValorDiaria());
+        System.out.println();
+        System.out.println("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
+
     }
 }

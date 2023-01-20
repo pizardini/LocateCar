@@ -21,7 +21,6 @@ public class ViewVeiculo {
 
         private static VeiculoController veiculoController = new VeiculoController();
         private static Agencia agencia = new Agencia();
-        private static List<Veiculo> veiculos = new ArrayList<>();
 
         public static void printMenuVeiculo() {
             System.out.println("Bem-vindo ao Cadastro de Cliente");
@@ -138,6 +137,7 @@ public class ViewVeiculo {
 
     public List<Veiculo> buscarVeiculosAgencia(String nomeAgencia) {
 
+            List<Veiculo> veiculos = veiculoController.listar();
             List<Veiculo> veiculosAgencia = new ArrayList<>();
             for(Veiculo v:veiculos){
 
@@ -150,24 +150,9 @@ public class ViewVeiculo {
 
     public Veiculo buscarVeiculoPlaca(String placaVeiculo) {
 
-            return buscarPlaca(placaVeiculo);
+            return veiculoController.buscarPlaca(placaVeiculo);
     }
 
-
-    public Veiculo buscarPlaca(String placa) {
-
-        Veiculo veiculo = null;
-        for (int i = 0; i < veiculos.size(); i++){
-
-            if (veiculos.get(i).getPlaca().toLowerCase().equals(placa.toLowerCase())) {
-                veiculo = veiculos.get(i);
-                veiculos.get(i).setAlugado(true);
-            }
-
-        }
-        return veiculo;
-
-    }
 }
 
 

@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 
 public class VeiculoController {
-    protected static List<Veiculo> veiculos = new ArrayList<>();
+    private static List<Veiculo> veiculos = new ArrayList<>();
     //Agencia agencia = new Agencia();
 
     public static boolean veiculoOpcao(int value) {
@@ -47,6 +47,21 @@ public class VeiculoController {
 
     public List<Veiculo> listar() {
         return this.veiculos;
+    }
+
+    public Veiculo buscarPlaca(String placa) {
+
+        Veiculo veiculo = null;
+        for (int i = 0; i < veiculos.size(); i++){
+
+            if (veiculos.get(i).getPlaca().toLowerCase().equals(placa.toLowerCase())) {
+                veiculo = veiculos.get(i);
+                veiculos.get(i).setAlugado(true);
+            }
+
+        }
+        return veiculo;
+
     }
 
 

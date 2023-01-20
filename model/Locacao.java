@@ -7,17 +7,24 @@ public class Locacao {
 
     private Pessoa pessoa;
     private Agencia agencia;
+    private Agencia AgenciaDevolucao;
     private Veiculo veiculo;
     private String dataInicio;
     private String dataDevolucao;
     private Integer qtdoDias;
-
     private Double desconto;
 
     private Double valorDiaria;
 
     private Double valorTotalLocacao;
 
+    public Agencia getAgenciaDevolucao() {
+        return AgenciaDevolucao;
+    }
+
+    public void setAgenciaDevolucao(Agencia agenciaDevolucao) {
+        AgenciaDevolucao = agenciaDevolucao;
+    }
 
     public Double getDesconto() {
         return desconto;
