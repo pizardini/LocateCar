@@ -4,6 +4,7 @@ import model.Agencia;
 import model.Locacao;
 import model.Locadora;
 import model.entities.Pessoa;
+import model.entities.Veiculo;
 import repository.LocacaoRepository;
 import view.ViewLocacao;
 
@@ -31,6 +32,8 @@ public class LocadoraController {
 
         Pessoa pessoa = viewLocacao.buscarCliente();
         Agencia agencia = viewLocacao.buscarAgencia();
+        Veiculo veiculo = viewLocacao.buscarVeiculo(agencia.getNome());
+
 
     }
 

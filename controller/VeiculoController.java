@@ -1,13 +1,6 @@
 package controller;
 
-import model.Agencia;
-import model.entities.Pessoa;
 import model.entities.Veiculo;
-import model.veiculos.Caminhao;
-import model.veiculos.Carro;
-import model.veiculos.Moto;
-import util.ConsoleUIHelper;
-import view.Menu;
 import view.ViewVeiculo;
 
 import java.util.ArrayList;
@@ -46,9 +39,10 @@ public class VeiculoController {
                 .collect(Collectors.toList());
     }
 
-    public static void buscar(String placa) {
+    public static Veiculo buscar(String placa) {
         ViewVeiculo.listarTudo(buscarPorFabricante(placa));;
 
+        return null;
     }
 
     public List<Veiculo> listar() {
@@ -56,6 +50,10 @@ public class VeiculoController {
     }
 
 
+
+
 }
+
+
 
 

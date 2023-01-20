@@ -136,9 +136,39 @@ public class ViewVeiculo {
     }
 
 
+    public List<Veiculo> buscarVeiculosAgencia(String nomeAgencia) {
 
+            List<Veiculo> veiculosAgencia = new ArrayList<>();
+            for(Veiculo v:veiculos){
+
+                if(v.getNumeroAgencia().equals(nomeAgencia) && (!v.getAlugado())){
+                    veiculosAgencia.add(v);
+                }
+            }
+            return veiculosAgencia;
+    }
+
+    public Veiculo buscarVeiculoPlaca(String placaVeiculo) {
+
+            return buscarPlaca(placaVeiculo);
+    }
+
+
+    public Veiculo buscarPlaca(String placa) {
+
+        Veiculo veiculo = null;
+        for (int i = 0; i < veiculos.size(); i++){
+
+            if (veiculos.get(i).getPlaca().toLowerCase().equals(placa.toLowerCase())) {
+                veiculo = veiculos.get(i);
+                veiculos.get(i).setAlugado(true);
+            }
+
+        }
+        return veiculo;
 
     }
+}
 
 
 

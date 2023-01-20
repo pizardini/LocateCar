@@ -5,7 +5,10 @@ import controller.ClienteController;
 import controller.LocadoraController;
 import model.Agencia;
 import model.entities.Pessoa;
+import model.entities.Veiculo;
 import util.ConsoleUIHelper;
+
+import java.util.List;
 
 public class ViewLocacao {
 
@@ -13,6 +16,8 @@ public class ViewLocacao {
     private static LocadoraController locadoraController = new LocadoraController();
     private ClienteController clienteController = new ClienteController();
     private AgenciaController agenciaController = new AgenciaController();
+
+    private ViewVeiculo viewVeiculo = new ViewVeiculo();
 
     public static void printMenuLocacao() {
         System.out.println("Bem-vindo a Locação de Veiculo");
@@ -60,5 +65,17 @@ public class ViewLocacao {
         }
 
         return agencia;
+    }
+
+    public Veiculo buscarVeiculo(String nomeAgencia) {
+
+        List<Veiculo> veiculosAgencia = viewVeiculo.buscarVeiculosAgencia(nomeAgencia);
+        viewVeiculo.listarTudo(veiculosAgencia);
+
+        String placaVeiculo = ConsoleUIHelper.askNoEmptyInput("Digite a placa do veiculo que deseja locar", 3);
+
+        Veiculo veiculo = viewVeiculo.buscarVeiculoPlaca(placaVeiculo);
+
+        return veiculo;
     }
 }
