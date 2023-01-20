@@ -21,15 +21,15 @@ public abstract class Veiculo {
 
     protected Boolean alugado;
 
-    public int getNumeroAgencia() {
+    public String getNumeroAgencia() {
         return numeroAgencia;
     }
 
-    public void setNumeroAgencia(int numeroAgencia) {
+    public void setNumeroAgencia(String numeroAgencia) {
         this.numeroAgencia = numeroAgencia;
     }
 
-    protected int numeroAgencia;
+    protected String numeroAgencia;
 
     public String getFabricante() {
         return fabricante;

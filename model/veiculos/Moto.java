@@ -2,19 +2,17 @@ package model.veiculos;
 
 import model.entities.Veiculo;
 
-import java.math.BigDecimal;
-
 public class Moto extends Veiculo {
-    public Moto() {
+    public Moto(String fabricante, String modelo, String placa, String ano) {
     }
 
 
-    public Moto(int numeroAgencia, String fabricante, String modelo, String placa, String ano) {
-        this.numeroAgencia = numeroAgencia;
+    public Moto(String fabricante, String modelo, String placa, String ano, String numeroAgencia) {
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.placa = placa;
         this.ano = ano;
+        this.numeroAgencia = numeroAgencia;
         this.alugado = false;
     }
     @Override
