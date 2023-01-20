@@ -68,7 +68,7 @@ public class ClienteController {
     }
 
 
-    public void cadastrarCliente() {
+    public Pessoa cadastrarCliente() {
         Pessoa pessoa;
         int option = viewCliente.tipoCliente();
 
@@ -89,6 +89,8 @@ public class ClienteController {
             System.out.println("===============================");
             System.out.println();
         }
+
+        return pessoa;
 
     }
     private void listarClientes() {
@@ -130,6 +132,24 @@ public class ClienteController {
         }
 
         pessoaController.alterarCliente(index, pessoaAlterada);
+    }
+
+    public Pessoa buscarClienteParaLocacao() {
+
+        int tipo = viewCliente.tipoDeClienteBusca();
+        String documento = viewCliente.buscaPessoa(tipo);
+
+        Pessoa pessoa = buscarLista(documento, tipo);
+        if (pessoa == null){
+
+            System.out.println();
+            System.out.println("Cliente não Encontrado Cadastre o cliente:");
+            System.out.println();
+             pessoa = cadastrarCliente();
+        }
+
+        return pessoa;
+
     }
 }
 

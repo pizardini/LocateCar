@@ -9,6 +9,7 @@ public class Menu {
 
     private static ViewCliente viewCliente = new ViewCliente();
     private static ViewVeiculo viewVeiculo = new ViewVeiculo();
+    private static ViewLocacao viewLocacao = new ViewLocacao();
 
     public static void printMenuPrincipal() {
         System.out.println("Bem-vindo a LocateCar");
@@ -21,11 +22,9 @@ public class Menu {
 
             case 2 -> ViewAgencia.printMenuAgencia();
 
-            case 3 -> System.out.println("Alugar Veículo");
+            case 3 -> viewLocacao.printMenuLocacao();
 
-            case 4 -> System.out.println("Devolver veículo");
-
-            case 5 -> {
+            case 4 -> {
                 if (ConsoleUIHelper.askConfirm("Tem certeza que deseja sair?","Sim", "Não")) {
                     System.exit(0);
                 };
@@ -40,8 +39,7 @@ public class Menu {
                 "Gerenciar veículos",
                 "Gerenciar Cliente",
                 "Gerenciar agência",
-                "Alugar veículo",
-                "Devolver veículo",
+                "Locadora (Locar/Devover)",
                 "Sair"
         );
         return option;

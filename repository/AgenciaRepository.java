@@ -23,4 +23,9 @@ public class AgenciaRepository {
     public void removerAgencia(Agencia agencia) {
         agencias.remove(agencia);
     }
+
+    public Agencia buscarAgenciaById(int index){
+        return agencias.get(index);
+    }
 }
+

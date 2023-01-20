@@ -10,12 +10,8 @@ import java.util.stream.Collectors;
 
 
 public class AgenciaController {
-    static AgenciaRepository agenciaRepository;
+    static AgenciaRepository agenciaRepository = new AgenciaRepository();
 
-
-    public AgenciaController() {
-        agenciaRepository = new AgenciaRepository();
-    }
 
     private ViewAgencia viewAgencia = new ViewAgencia();
 
@@ -58,7 +54,7 @@ public class AgenciaController {
         return false;
     }
 
-    private void listarAgencias() {
+    public void listarAgencias() {
 
         List<Agencia> agencias = agenciaRepository.listarAgencias();
         System.out.println("Lista de Agências cadastradas");
@@ -82,5 +78,22 @@ public class AgenciaController {
             ViewAgencia.printAgencias(agenciasEncontradas);
         }
 
+    }
+
+
+    public Agencia selecionarAgencia(String nomeAgencia) {
+
+        List<Agencia> agencias = agenciaRepository.listarAgencias();
+        int index = -1;
+        for (int i = 0; i < agencias.size(); i++) {
+            if (agencias.get(i).getNome().equals(nomeAgencia)) {
+                index = i;
+            }
+        }
+        if(index < 0){
+            return null;
+        }
+
+        return agenciaRepository.buscarAgenciaById(index);
     }
 }

@@ -1,9 +1,19 @@
 package controller;
 
+import model.Agencia;
+import model.Locacao;
 import model.Locadora;
+import model.entities.Pessoa;
+import repository.LocacaoRepository;
+import view.ViewLocacao;
+
 
 public class LocadoraController {
-    protected Locadora locadora;
+
+    private static LocacaoRepository locacaoRepository = new LocacaoRepository();
+    private Locacao locacao = new Locacao();
+    private ViewLocacao viewLocacao = new ViewLocacao();
+    private AgenciaController agenciaController = new AgenciaController();
 
 
     public boolean locadoraOpcao(int option) {
@@ -18,6 +28,10 @@ public class LocadoraController {
     }
 
     private void locarVeiculo() {
+
+        Pessoa pessoa = viewLocacao.buscarCliente();
+        Agencia agencia = viewLocacao.buscarAgencia();
+
     }
 
     private void devolverVeiculo() {
