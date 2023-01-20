@@ -1,36 +1,49 @@
 package view;
 
+import model.Agencia;
+import model.Locadora;
 import util.ConsoleUIHelper;
 
-public class Menu {
-    public static void printMenu() {
-        System.out.println("Bem-vindo a LocateCar");
-        int value = optionMenu();
 
-        if (value ==0){
-            System.out.println("comprado");
+public class Menu {
+
+    private static ViewCliente viewCliente = new ViewCliente();
+    private static ViewVeiculo viewVeiculo = new ViewVeiculo();
+    private static ViewLocacao viewLocacao = new ViewLocacao();
+
+    public static void printMenuPrincipal() {
+        System.out.println("Bem-vindo a LocateCar");
+        int value = optionMenuPrincipal();
+
+        switch (value) {
+            case 0 -> viewVeiculo.printMenuVeiculo();
+
+            case 1 -> viewCliente.printMenuCliente();
+
+            case 2 -> ViewAgencia.printMenuAgencia();
+
+            case 3 -> viewLocacao.printMenuLocacao();
+
+            case 4 -> {
+                if (ConsoleUIHelper.askConfirm("Tem certeza que deseja sair?","Sim", "Não")) {
+                    System.exit(0);
+                };
+            }
         }
     }
 
 
-
-    public static int optionMenu() {
+    public static int optionMenuPrincipal() {
         int option = ConsoleUIHelper.askChooseOption(
                 "O que deseja fazer?",
-                "Cadastrar os veículos",
-                "Buscar um veículo por parte do nome",
-                "Cadastrar a agência onde o veículo será alugado/devolvido",
-                "Alterar a agência onde o veículo será alugado/devolvido",
-                "Buscar uma agência por parte do nome ou do logradouro do endereço",
-                "Cadastrar o cliente (pessoa fisica/juridica)",
-                "Alterar o cliente (pessoa fisica/juridica)",
-                "Alugar um veículo para pessoa fisica",
-                "Alugar um veículo para pessoa juridica",
-                "Devolver um veículo para pessoa fisica",
-                "Devolver um veículo para pessoa juridica",
-                "Gerar um comprovante com todos os dados do aluguel (aberto para o grupo decidir o que vai ser demonstrado)",
-                "Gerar um comprovante com todos os dados da devolução (aberto para o grupo decidir o que vai ser demonstrado)"
+                "Gerenciar veículos",
+                "Gerenciar Cliente",
+                "Gerenciar agência",
+                "Locadora (Locar/Devover)",
+                "Sair"
         );
         return option;
     }
 }
+
+

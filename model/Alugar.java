@@ -7,8 +7,10 @@ import java.util.Date;
 
 public class Alugar {
 
-    private String data;
-    private Date horario;
+    private String dataRetirar;
+    private String dataDevolver;
+    private Date horarioRetirar;
+    private Date horarioDevolver;
     private Veiculo veiculo;
     private Pessoa pessoa;
     private Agencia agencia;
