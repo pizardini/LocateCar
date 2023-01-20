@@ -16,6 +16,7 @@ public abstract class Veiculo {
     protected String modelo;
 
     protected String ano;
+    protected String numeroAgencia;
 
     protected Double valorDiaria;
 
@@ -52,6 +53,15 @@ public abstract class Veiculo {
     public void setAno(String ano) {
         this.ano = ano;
     }
+
+    public String getNumeroAgencia() {
+        return numeroAgencia;
+    }
+
+    public void setNumeroAgencia(String numeroAgencia) {
+        this.numeroAgencia = numeroAgencia;
+    }
+
 
     public void setValorDiaria(Double valorDiaria) {
         this.valorDiaria = valorDiaria;

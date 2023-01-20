@@ -58,40 +58,39 @@ public class ViewVeiculo {
     }
 
 
-    public static void cadastrarVeiculo() {
+    public static Veiculo cadastrarVeiculo() {
         int tipo = tipoVeiculo();
         Veiculo veiculo;
-        switch (tipo) {
-            case 0 -> {
-                veiculo = new Moto();
 
-                //adicionar na lista de veiculos da agencia
-            }
-            case 1 -> {
-                veiculo = new Carro();
-                //adicionar na lista de veiculos da agencia
-
-            }
-            case 2 -> {
-                veiculo = new Caminhao();
-                //adicionar na lista de veiculos da agencia
-            }
-            default -> throw new IllegalStateException("Unexpected value: " + tipo);
-        }
         String fabricante = ConsoleUIHelper.askNoEmptyInput("Digite a marca do veículo", 3).toUpperCase();
         String modelo = ConsoleUIHelper.askNoEmptyInput("Digite o modelo do veículo", 3).toUpperCase();
         String placa = ConsoleUIHelper.askNoEmptyInput("Digite a placa do veículo", 3).toUpperCase();
         String ano = ConsoleUIHelper.askNoEmptyInput("Digite o ano do veículo", 3).toUpperCase();
-        veiculo.setFabricante(fabricante);
-        veiculo.setModelo(modelo);
-        veiculo.setPlaca(placa);
-        veiculo.setAno(ano);
-        veiculoController.adicionar(veiculo);
+        String numeroAgencia = ConsoleUIHelper.askNoEmptyInput("Digite o número da agência que deseja cadastrar esse veículo", 3).toUpperCase();
+        switch (tipo) {
+            case 0 -> {
+                veiculo = new Moto(fabricante, modelo, placa, ano, numeroAgencia);
+                veiculoController.adicionar(veiculo);
 
-        agencia.setVeiculos(veiculos);
 
-        agencia.addVeiculo(veiculo);
-        agencia.getVeiculos();
+                //adicionar na lista de veiculos da agencia
+            }
+            case 1 -> {
+                veiculo = new Carro(fabricante, modelo, placa, ano, numeroAgencia);
+                veiculoController.adicionar(veiculo);
+                //adicionar na lista de veiculos da agencia
+
+            }
+            case 2 -> {
+                veiculo = new Caminhao(fabricante, modelo, placa, ano, numeroAgencia);
+                veiculoController.adicionar(veiculo);
+                //adicionar na lista de veiculos da agencia
+            }
+            default -> throw new IllegalStateException("Unexpected value: " + tipo);
+        }
+
+
+        return veiculo;
 
     }
 
@@ -100,7 +99,7 @@ public class ViewVeiculo {
         System.out.println("Veículos cadastrados: ");
         int i = 0;
         for (Veiculo veiculo : veiculos) {
-            System.out.println(" Identificador: " + i + " Fabricante: " + veiculo.getFabricante() + " Modelo: " + veiculo.getModelo() + " Placa: " + veiculo.getPlaca() + " Ano: " + veiculo.getAno());
+            System.out.println(" Identificador: " + i + " Fabricante: " + veiculo.getFabricante() + " Modelo: " + veiculo.getModelo() + " Placa: " + veiculo.getPlaca() + " Ano: " + veiculo.getAno() + " Número da Agência: " + veiculo.getNumeroAgencia());
             i++;
         }
         System.out.println();
