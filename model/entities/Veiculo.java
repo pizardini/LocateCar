@@ -3,7 +3,7 @@ package model.entities;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public abstract class Veiculo {
+public abstract class Veiculo{
 
     public Veiculo() {
         this.valorDiaria = getValorDiaria();
