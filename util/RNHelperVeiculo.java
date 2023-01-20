@@ -53,7 +53,7 @@ public class RNHelperVeiculo {
     public static String trataAno() {
         String ano = null;
         while (true) {
-            ano = ConsoleUIHelper.askNoEmptyInput("Digite a marca do veículo", 3).toUpperCase();
+            ano = ConsoleUIHelper.askNoEmptyInput("Digite o ano do veículo", 3).toUpperCase();
             try{
                 if (!(Integer.parseInt(ano) >= 1980 && Integer.parseInt(ano) <= 2030 && ano.matches("[0-9]*"))) {
                     System.out.println(ano + " Não é um valor válido para o ano de um veículo, digite novamente.");

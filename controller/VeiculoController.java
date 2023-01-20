@@ -36,7 +36,19 @@ public class VeiculoController {
 
 
     public void adicionar(Veiculo veiculo) {
-       this.veiculos.add(veiculo);
+        boolean isVeiculoRepetido = checaVeiculoRepetido(veiculo);
+        if (!isVeiculoRepetido){
+            this.veiculos.add(veiculo);
+        }
+    }
+
+    public boolean checaVeiculoRepetido(Veiculo veiculo){
+        for (int i = 0; i < veiculos.size(); i++) {
+            if (veiculos.get(i).equals(veiculo)){
+                return true;
+            }
+        }
+        return false;
     }
 
 
