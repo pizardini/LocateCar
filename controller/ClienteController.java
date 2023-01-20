@@ -18,9 +18,8 @@ public class ClienteController {
         switch (value) {
             case 0 -> cadastrarCliente();
             case 1 -> listarClientes();
-            case 2 -> System.out.println("Atualizar Cliente");
-            case 3 -> buscarCliente();
-            case 4 -> continuar = false;
+            case 2 -> buscarCliente();
+            case 3 -> continuar = false;
         }
 
         return continuar;
@@ -30,11 +29,17 @@ public class ClienteController {
     private void buscarCliente() {
         int option = viewCliente.tipoDeClienteBusca();
         String busca = viewCliente.buscaPessoa(option);
-
         Pessoa pessoa = buscarLista(busca, option);
 
-        System.out.println(pessoa.getName() + " " + pessoa.getTipoPessoa());
+        if(pessoa != null){
 
+            int index = pessoaController.indexPessoa(pessoa);
+            viewCliente.exibirCliente(index, pessoa);
+
+
+        }else{
+            viewCliente.mensagemSemSucessoBusca();
+        }
 
     }
 
@@ -63,7 +68,7 @@ public class ClienteController {
     }
 
 
-    private void cadastrarCliente() {
+    public void cadastrarCliente() {
         Pessoa pessoa;
         int option = viewCliente.tipoCliente();
 
@@ -115,5 +120,16 @@ public class ClienteController {
     }
 
 
+    public void alterarPessoa(int index, Pessoa pessoa) {
+        Pessoa pessoaAlterada;
+        if(pessoa.getTipoPessoa().equals("PessoaFisica")){
+            pessoaAlterada = viewCliente.dadosPessoaFisica();
+
+        }else{
+            pessoaAlterada = viewCliente.dadosPessoaJuridica();
+        }
+
+        pessoaController.alterarCliente(index, pessoaAlterada);
+    }
 }
 

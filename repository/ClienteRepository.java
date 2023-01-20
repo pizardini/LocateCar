@@ -38,4 +38,9 @@ public class ClienteRepository {
     public void alterarPessoa(int id, Pessoa pessoa){
         pessoas.set(id, pessoa);
     }
+
+    public Integer indexPessoa(Pessoa pessoa) {
+
+        return pessoas.indexOf(pessoa);
+    }
 }

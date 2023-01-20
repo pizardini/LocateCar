@@ -28,8 +28,7 @@ public class ViewCliente {
         int option = ConsoleUIHelper.askChooseOption("Escolha a opção: ",
                 "Cadastrar Cliente;",
                 "Listar Clientes;",
-                "Atualizar Cliente;",
-                "Buscar Cliente;",
+                "Buscar Cliente/Alterar Cliente;",
                 "Voltar"
         );
 
@@ -43,6 +42,16 @@ public class ViewCliente {
                 "Pessoa Juridica");
         return option;
 
+    }
+
+    public static void mensagemSemSucessoBusca(){
+        System.out.println();
+        System.out.println("Nenhum cliente encontrato");
+        System.out.println();
+        Boolean cadastrar = ConsoleUIHelper.askConfirm("Deseja cadastrar esse CPF/CNPJ","Sim", "Não");
+        if(cadastrar){
+            clienteController.cadastrarCliente();
+        }
     }
 
 
@@ -177,8 +186,8 @@ public class ViewCliente {
 
             if(p.getTipoPessoa().equals("PessoaFisica")) {
 
-                System.out.println("# : Nome: " + p.getName() + " --- " +
-                        "CPF: " + ((PessoaFisica)p).getCpf() + " --- " + "Telefone: " + p.getTelefone());
+                System.out.println("# : Nome: " + p.getName() + " " +
+                        "CPF: " + ((PessoaFisica)p).getCpf() + " " + "Telefone: " + p.getTelefone());
             }
 
         }
@@ -191,8 +200,8 @@ public class ViewCliente {
 
             if(p.getTipoPessoa().equals("PessoaJuridica")) {
 
-                System.out.println("# : Nome: " + p.getName() + " --- " +
-                        "CNPJ: " + ((PessoaJuridica)p).getCnpj() + " --- " + "Telefone: " + p.getTelefone());
+                System.out.println("# : Nome: " + p.getName() + " " +
+                        "CNPJ: " + ((PessoaJuridica)p).getCnpj() + " " + "Telefone: " + p.getTelefone());
             }
 
         }
@@ -203,7 +212,6 @@ public class ViewCliente {
     }
 
     public int tipoDeClienteBusca(){
-        System.out.println("Que tipo de Cliente você esta Buscando");
         int opcao = tipoCliente();
         return opcao;
     }
@@ -238,8 +246,22 @@ public class ViewCliente {
     }
 
 
+    public void exibirCliente(int index, Pessoa pessoa) {
 
+        System.out.println("-----------------------------");
+        System.out.println("O Cliente que você Buscou é: ");
+        if(pessoa.getTipoPessoa().equals("PessoaFisica")) {
+            System.out.println("# : ID: " + index + " NOME: " + pessoa.getName() + " CPF: " + ((PessoaFisica) pessoa).getCpf());
+        }else{
+            System.out.println("# : ID: " + index + " NOME: " + pessoa.getName() + " CNPJ: " + ((PessoaJuridica) pessoa).getCnpj());
+        }
 
+        System.out.println();
+        Boolean alterar = ConsoleUIHelper.askConfirm("Deseja Alterar o Cliente", "Sim", "Não");
+        System.out.println();
+        if(alterar){
+            clienteController.alterarPessoa(index, pessoa);
+        }
 
-
+    }
 }

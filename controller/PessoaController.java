@@ -29,6 +29,13 @@ public class PessoaController {
 
     }
 
+    public Integer indexPessoa(Pessoa pessoa){
+
+        Integer index = clienteRepository.indexPessoa(pessoa);
+        return index;
+
+    }
+
 
     public void alterarCliente(int index, Pessoa pessoa){
 
