@@ -19,7 +19,7 @@ public class AgenciaController {
 
     private ViewAgencia viewAgencia = new ViewAgencia();
 
-    public boolean agenciaOpcao(int value){
+    public boolean agenciaOpcao(int value) {
 
         boolean continuar = true;
         switch (value) {
@@ -37,8 +37,26 @@ public class AgenciaController {
         Agencia agencia = new Agencia();
         agencia = ViewAgencia.dadosAgencia();
 
+        //para esta validação dar certo é necessario reformular o equals e
+        // o numero da agencia para uma melhor comparação.
+        /*boolean isAgenciaRepetida = checaAgenciaRepetida(agencia);
+        if (isAgenciaRepetida) {
+            agenciaRepository.adicionarAgencias(agencia);
+            viewAgencia.mensagemGravar();
+
+        }*/
+
         agenciaRepository.adicionarAgencias(agencia);
         viewAgencia.mensagemGravar();
+    }
+
+    public boolean checaAgenciaRepetida(Agencia agencia) {
+        for (int i = 0; i < agenciaRepository.listarAgencias().size(); i++) {
+            if (agenciaRepository.listarAgencias().get(i).equals(agencia)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void listarAgencias() {
@@ -53,12 +71,12 @@ public class AgenciaController {
         List<Agencia> agencias = agenciaRepository.listarAgencias();
 
         for (int i = 0; i < agencias.size(); i++) {
-            if(agencias.get(i).getNome().contains(nome)) {
+            if (agencias.get(i).getNome().contains(nome)) {
                 agenciasEncontradas.add(agencias.get(i));
             }
         }
 
-        if(agenciasEncontradas.size() == 0) {
+        if (agenciasEncontradas.size() == 0) {
             System.out.println("Nenhuma agência encontrada");
         } else {
             System.out.println("Agências encontradas:");
