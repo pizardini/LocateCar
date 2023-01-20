@@ -17,10 +17,19 @@ public class Menu {
         switch (value) {
             case 0 -> viewVeiculo.printMenuVeiculo();
 
-
             case 1 -> viewCliente.printMenuCliente();
 
             case 2 -> ViewAgencia.printMenuAgencia();
+
+            case 3 -> System.out.println("Alugar Veículo");
+
+            case 4 -> System.out.println("Devolver veículo");
+
+            case 5 -> {
+                if (ConsoleUIHelper.askConfirm("Tem certeza que deseja sair?","Sim", "Não")) {
+                    System.exit(0);
+                };
+            }
         }
     }
 
@@ -30,9 +39,7 @@ public class Menu {
                 "O que deseja fazer?",
                 "Gerenciar veículos",
                 "Gerenciar Cliente",
-                "Cadastrar agência ",
-                "Alterar agência",
-                "Buscar uma agência por parte do nome ou do logradouro do endereço",
+                "Gerenciar agência",
                 "Alugar veículo",
                 "Devolver veículo",
                 "Sair"
