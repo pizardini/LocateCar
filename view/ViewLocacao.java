@@ -62,7 +62,6 @@ public class ViewLocacao {
         Agencia agencia = agenciaController.selecionarAgencia(nomeAgencia);
         if (agencia == null){
             System.out.println("Digitou nome errado tente novamente");
-            agencia = buscarAgencia();
         }
 
         return agencia;
@@ -104,6 +103,97 @@ public class ViewLocacao {
         System.out.println("Nome do Cliente: " + locacao.getValorDiaria());
         System.out.println();
         System.out.println("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
+
+    }
+
+    public int escolherLocacaoDevolver(List<Locacao> locacoes, Pessoa pessoa) {
+        System.out.println();
+        System.out.println("Cliente: " + pessoa.getName());
+        System.out.println();
+
+        boolean temLocacao = false;
+
+        for (int i = 0; i < locacoes.size(); i++) {
+            if(locacoes.get(i).getPessoa().equals(pessoa)){
+
+                System.out.println("# : ID: " + i +
+                        " Data locação: " + locacoes.get(i).getDataInicio() + " Veiculo: " +
+                        locacoes.get(i).getVeiculo().getPlaca() + " " + locacoes.get(i).getVeiculo().getModelo());
+
+                temLocacao = true;
+
+            }
+        }
+        if(!temLocacao){
+            return -1;
+        }
+
+        int index = ConsoleUIHelper.askNumberInt("Digite o indice da devolução: ");
+
+        return index;
+
+    }
+
+    public Locacao devoverVeiculo(Locacao locacao) {
+
+        String dataDevolucao = ConsoleUIHelper.askNoEmptyInput("digite a data de devolucao:",3);
+        int diasLocacao = ConsoleUIHelper.askNumberInt("Quantos dias de locacao");
+        System.out.println("Escolha a agencia de devolucao");
+        Agencia agencia = buscarAgencia();
+        locacao.setDataDevolucao(dataDevolucao);
+        locacao.setQtdoDias(diasLocacao);
+        Double valorFinal =  valorFinal = diasLocacao * locacao.getVeiculo().getValorDiaria();
+        Double vDesconto = 0.0;
+
+        if(locacao.getPessoa().getTipoPessoa().equals("PessoaFisica")){
+            if(diasLocacao > 5){
+                double desconto = (diasLocacao * locacao.getVeiculo().getValorDiaria()) * 0.05;
+                valorFinal = valorFinal - desconto;
+                vDesconto = 5.0;
+            }
+        }else{
+            if(diasLocacao > 3){
+            double desconto = (diasLocacao * locacao.getVeiculo().getValorDiaria()) * 0.10;
+            valorFinal = valorFinal - desconto;
+                vDesconto = 10.0;
+            }
+
+        }
+        locacao.setAgenciaDevolucao(agencia);
+        locacao.setValorTotalLocacao(valorFinal);
+        locacao.setDesconto(vDesconto);
+
+        return locacao;
+    }
+
+    public void reciboDevolucao(Locacao locacao) {
+        System.out.println("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
+        System.out.println("Recibo de Devolucao");
+        System.out.println();
+        System.out.println("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
+        System.out.println("Data da Locação: " + locacao.getDataInicio());
+        System.out.println("Data de devolução: " + locacao.getDataDevolucao());
+        System.out.println("Nome do Cliente: " + locacao.getPessoa().getName());
+        System.out.println();
+        System.out.println("Nome da Agencia: " + locacao.getAgencia().getNome());
+        System.out.println("Endereco da Agencia: " + locacao.getAgencia().getEndereco());
+        System.out.println();
+        System.out.println("Dados do Veiculo");
+        System.out.println("Modelo: " + locacao.getVeiculo().getModelo());
+        System.out.println("Placa do Veiculo:" + locacao.getVeiculo().getPlaca());
+        System.out.println("Nome do Cliente: " + locacao.getVeiculo().getTipoVeiculo());
+        System.out.println("Nome do Cliente: " + locacao.getValorDiaria());
+        System.out.println();
+        System.out.println("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
+
+        System.out.println("Quantidade de dias: " + locacao.getQtdoDias());
+        System.out.println("Desconto: " + locacao.getDesconto());
+        System.out.println("Valor total a Pagar: " + locacao.getValorTotalLocacao());
+        System.out.println();
+        System.out.println("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
+
+
+
 
     }
 }
