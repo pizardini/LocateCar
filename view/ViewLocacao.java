@@ -163,6 +163,8 @@ public class ViewLocacao {
         locacao.setValorTotalLocacao(valorFinal);
         locacao.setDesconto(vDesconto);
 
+        viewVeiculo.AlterarVeiculo(locacao.getVeiculo());
+
         return locacao;
     }
 

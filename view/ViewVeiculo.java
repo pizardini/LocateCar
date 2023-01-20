@@ -153,6 +153,21 @@ public class ViewVeiculo {
             return veiculoController.buscarPlaca(placaVeiculo);
     }
 
+    public void AlterarVeiculo(Veiculo veiculo) {
+
+            veiculo.setAlugado(false);
+
+            List<Veiculo> veiculos = veiculoController.listar();
+            int index = -1;
+            for (int i = 0; i < veiculos.size(); i++) {
+                if(veiculos.get(i).getPlaca().equals(veiculo.getPlaca())){
+                    index = i;
+                }
+            }
+
+        veiculoController.alterarVeiculo(index, veiculo);
+
+    }
 }
 
 

@@ -64,6 +64,10 @@ public class VeiculoController {
 
     }
 
+    public void alterarVeiculo (int index, Veiculo veiculo){
+        veiculos.set(index, veiculo);
+    }
+
 
 
 

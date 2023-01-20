@@ -79,9 +79,12 @@ public class LocadoraController {
 
         locacao = viewLocacao.devoverVeiculo(locacao);
 
+
+
         locacaoRepository.alterarLocacao(index, locacao);
 
         viewLocacao.reciboDevolucao(locacao);
+
 
 
     }
